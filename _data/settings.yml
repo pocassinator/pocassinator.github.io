@@ -2,19 +2,19 @@
 #-------------------------------
 # General Site Settings
 
-title: Kross
+title: Pocassinator
 logo:
-author: themefisher
-description: this is meta description
-email: steve.fruits@email.com
+author: shruti
+description: I am Po!
+email: hi@shrutisolanki.com
 phone: +880 2544 658 256
 address: 125/A, CA Commercial Area, California, USA
-copyright: Copyright &copy; 2020 Designed by [Themefisher](https://themefisher.com) & Developed by [Getjekyllthemes](https://getjekyllthemes.com)
+copyright: Copyright &copy; 2023
 
 menu:
   - { name: About, link: "/about" }
-  - { name: Blog, link: "/blog" }
   - { name: Portfolio, link: "/portfolio" }
+  - { name: Blog, link: "/blog" }
   - { name: Contact, link: "/contact" }
 
 #-------------------------------
@@ -36,7 +36,7 @@ disqus-identifier: # Add your shortname for Disqus Comment. For example mr-brown
 # Hero Section
 
 hero:
-  hero-title: Hi! I’m <br> Christoher <br> UX designer
+  hero-title: Hi! I’m <br> Shruti Solanki, <br> Po!
 
 social:
   - { icon: "ti-facebook", link: "#" }
@@ -69,29 +69,29 @@ work-process:
     icon: "assets/images/icons/print.png"
     content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 
-# My Team Section
-team:
-  - title: "Jack Schenziwe"
-    image: "assets/images/team/member-1.png"
-    designation: "Project Manager"
+# # My Team Section
+# team:
+#   - title: "Jack Schenziwe"
+#     image: "assets/images/team/member-1.png"
+#     designation: "Project Manager"
 
-  - title: "Julias Carlie"
-    image: "assets/images/team/member-2.png"
-    designation: "Web Developer"
+#   - title: "Julias Carlie"
+#     image: "assets/images/team/member-2.png"
+#     designation: "Web Developer"
 
-  - title: "John Doe"
-    image: "assets/images/team/member-3.png"
-    designation: "Designer"
+#   - title: "John Doe"
+#     image: "assets/images/team/member-3.png"
+#     designation: "Designer"
 
 #-------------------------------
 # Skills Section
 
 skills-title: Skills
 skills:
-  - { name: Web Design, color: "#fdb157", value: "90%" }
-  - { name: Logo Design, color: "#9473e6", value: "60%" }
-  - { name: After Effects, color: "#bdecf6", value: "80%" }
-  - { name: Web App, color: "#ffbcaa", value: "70%" }
+  - { name: Painting, color: "#fdb157", value: "91%" }
+  - { name: Procrastination, color: "#9473e6", value: "100%" }
+  - { name: Digital Art, color: "#bdecf6", value: "82%" }
+  - { name: Handicraft, color: "#ffbcaa", value: "77%" }
 
 #-------------------------------
 # Exprerience Section
