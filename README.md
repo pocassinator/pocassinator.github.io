@@ -4,6 +4,14 @@ Kross Jekyll Creative Portfolio Template ported from [Kross HTML Template](https
 
 
 <!--ts-->
+* [Kross Jekyll](#kross-jekyll)
+   * [Demo](#demo)
+   * [Setup](#setup)
+   * [Customize](#customize)
+   * [Deployment](#deployment)
+   * [Reporting Issues](#reporting-issues)
+   * [Technical Support or Questions](#technical-support-or-questions)
+   * [License](#license)
 <!--te-->
 
 
