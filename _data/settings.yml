@@ -4,7 +4,7 @@
 
 title: Pocassinator
 logo:
-author: shruti
+author: Shruti Solanki
 description: I am Po!
 email: hi@shrutisolanki.com
 phone: +880 2544 658 256
@@ -36,7 +36,7 @@ disqus-identifier: # Add your shortname for Disqus Comment. For example mr-brown
 # Hero Section
 
 hero:
-  hero-title: Hi! I’m <br> Shruti Solanki, <br> Po!
+  hero-title: Hi! I’m <br> Shruti Solanki, <br> Urf Po!
 
 social:
   - { icon: "ti-facebook", link: "#" }
