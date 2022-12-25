@@ -2,6 +2,11 @@
 
 Kross Jekyll Creative Portfolio Template ported from [Kross HTML Template](https://themefisher.com/products/kross/)
 
+
+<!--ts-->
+<!--te-->
+
+
 ## Demo
 
 | Homepage  | About  | Blog  | Portfolio  | Contact  |
