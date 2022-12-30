@@ -1,4 +1,4 @@
-{% if site.data.settings.testimonial-items %}
+{% if site.data.testimonials.testimonial-items %}
 <!-- testimonial -->
 <section class="section bg-primary position-relative testimonial-bg-shapes">
   <div class="container">
@@ -7,7 +7,7 @@
         <h2 class="section-title text-white mb-5">Testimonials</h2>
       </div>
       <div class="col-lg-10 mx-auto testimonial-slider">
-        {% for testimonial-item in site.data.settings.testimonial-items %}
+        {% for testimonial-item in site.data.testimonials.testimonial-items %}
         <!-- slider-item -->
         <div class="text-center testimonial-content">
           <i class="ti-quote-right text-white icon mb-4 d-inline-block"></i>
