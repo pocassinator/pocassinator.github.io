@@ -30,8 +30,8 @@ sass:
 webp:
   enabled: true
   quality: 75
-  img_dir: ["/assets/images/portfolio"]
-  nested: true
+  img_dir: ["/assets/images/portfolio/handmade", "/assets/images/portfolio/digital", "/assets/images/portfolio/accessories"]
+  nested: false
   # add ".gif" to the format list to generate webp for animated gifs as well
   formats: [".jpeg", ".jpg", ".png", ".tiff"]
   # File extensions for animated gif files 
