@@ -31,7 +31,9 @@ layout: default
         <div class="shadow-down mb-4">
           <img src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.author }}" class="img-fluid w-100 rounded-lg border-thick border-white">
         </div>
+        {% if page.signature %}
         <img src="{{ site.baseurl }}/{{ page.signature }}" alt="signature" class="img-fluid">
+        {% endif %}
         <h4>{{ page.author }}</h4>
       </div>
     </div>
