@@ -55,10 +55,11 @@ portfolio-items:
     portfolio-type:
       - type: "accessories"
 
-  - image: "assets/images/portfolio/item-1.png"
+  - image: "assets/images/portfolio/digital/1.jpeg"
     url: "#"
     portfolio-type:
-      - type: "branding"
+      - type: "digital"
+
 
   - image: "assets/images/portfolio/item-3.png"
     url: "#"
