@@ -124,3 +124,43 @@ portfolio-items:
     url: "#"
     portfolio-type:
       - type: "digital"
+
+  - image: "assets/images/portfolio/digital/15.png"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/16.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/17.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/18.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/19.png"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/20.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/21.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/22.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
