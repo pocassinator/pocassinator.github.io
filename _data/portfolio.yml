@@ -60,15 +60,67 @@ portfolio-items:
     portfolio-type:
       - type: "digital"
 
-
-  - image: "assets/images/portfolio/item-3.png"
+  - image: "assets/images/portfolio/digital/2.jpeg"
     url: "#"
     portfolio-type:
-      - type: "design"
-      - type: "illustration"
-      - type: "branding"
+      - type: "digital"
 
-  - image: "assets/images/portfolio/item-7.png"
+  - image: "assets/images/portfolio/digital/3.png"
     url: "#"
     portfolio-type:
-      - type: "illustration"
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/4.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+  
+  - image: "assets/images/portfolio/digital/5.png"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/6.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/7.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/8.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/9.png"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/10.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/11.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/12.png"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/13.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
+
+  - image: "assets/images/portfolio/digital/14.png"
+    url: "#"
+    portfolio-type:
+      - type: "digital"
