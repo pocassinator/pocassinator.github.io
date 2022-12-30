@@ -44,29 +44,7 @@ social:
   - { icon: "ti-dribbble", link: "#" }
   - { icon: "ti-twitter", link: "#" }
 
-#-------------------------------
-# About (Section and Page)
-
-# About Section
-blurb: My work is characterized by a dynamic blend of control and chaos, drawing on a diverse range of sources for inspiration. Drawing on the raw beauty of nature and the enduring influence of popular culture, as well as the rich tapestry of contemporary Indian society, I seek to explore the depths of the human experience and the many states of mind that exist beyond the chaos and imperfections of everyday life. Through my art, I aim to find a sense of serenity and acceptance in the fleeting reality of existence, and to offer a unique and thought-provoking perspective on the complexities of the world around us.
-blurb-btn-link: "/about"
-blurb-btn-name: know more
-
-# About Page
-
-# Work Process Section
-work-process:
-  - title: "Research and Plan"
-    icon: "assets/images/icons/plan.png"
-    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-
-  - title: "Design and Develop"
-    icon: "assets/images/icons/design.png"
-    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-
-  - title: "Deliver"
-    icon: "assets/images/icons/print.png"
-    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+!include aboutme.yml
 
 # # My Team Section
 # team:
