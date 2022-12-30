@@ -37,7 +37,7 @@ webp:
   # File extensions for animated gif files 
   gifs: [".gif"]
   # Set to true to always regenerate existing webp files
-  regenerate: false
+  regenerate: true
   # List of files or directories to exclude
   exclude: []
   # append '.webp' to filename after original extension rather than replacing it.
