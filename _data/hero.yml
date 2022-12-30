@@ -1,0 +1,11 @@
+#-------------------------------
+# Hero Section
+
+hero:
+  hero-title: Hi! I’m <br> Shruti Solanki, <br> Urf Po!
+
+social:
+  - { icon: "ti-facebook", link: "#" }
+  - { icon: "ti-instagram", link: "#" }
+  - { icon: "ti-dribbble", link: "#" }
+  - { icon: "ti-twitter", link: "#" }
