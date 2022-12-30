@@ -44,7 +44,6 @@ social:
   - { icon: "ti-dribbble", link: "#" }
   - { icon: "ti-twitter", link: "#" }
 
-!include aboutme.yml
 
 # # My Team Section
 # team:
