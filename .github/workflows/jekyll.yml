@@ -36,6 +36,7 @@ jobs:
         with:
           node-version: 16
       - run: npm install --global cwebp-bin
+      - run: ls -la /home/runner/work/pocassinator.github.io/pocassinator.github.io/assets/images/portfolio
       - name: Setup Ruby
         uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
         with:
