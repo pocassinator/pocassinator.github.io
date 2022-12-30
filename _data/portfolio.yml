@@ -55,6 +55,7 @@ portfolio-items:
     portfolio-type:
       - type: "accessories"
 
+# Digital Assets
   - image: "assets/images/portfolio/digital/1.jpeg"
     url: "#"
     portfolio-type:
@@ -164,3 +165,109 @@ portfolio-items:
     url: "#"
     portfolio-type:
       - type: "digital"
+
+# Handmade Assets
+  - image: "assets/images/portfolio/handmade/1.png"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/2.png"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/3.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/4.png"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+  
+  - image: "assets/images/portfolio/handmade/5.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/6.png"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/7.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/8.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/9.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/10.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/11.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/12.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/13.png"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/14.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/15.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/16.png"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/17.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/18.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/19.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/20.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
+
+  - image: "assets/images/portfolio/handmade/21.jpeg"
+    url: "#"
+    portfolio-type:
+      - type: "handmade"
