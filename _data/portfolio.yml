@@ -3,59 +3,57 @@
 
 # Portfolio Home Section
 portfolio-home-items:
-  - image: "assets/images/portfolio/item-1.png"
+  - image: "assets/images/portfolio/accessories/1.jpeg"
     url: "#"
 
-  - image: "assets/images/portfolio/item-2.png"
+  - image: "assets/images/portfolio/accessories/2.jpeg"
     url: "#"
 
-  - image: "assets/images/portfolio/item-3.png"
+  - image: "assets/images/portfolio/accessories/3.jpeg"
     url: "#"
 
-  - image: "assets/images/portfolio/item-4.png"
+  - image: "assets/images/portfolio/accessories/4.jpeg"
     url: "#"
 
-  - image: "assets/images/portfolio/item-5.png"
+  - image: "assets/images/portfolio/accessories/5.jpeg"
     url: "#"
 
 # Portfolio Page
 portfolio-label:
-  - { title: "UI/UX Design", type: "design" }
-  - { title: "BRANDING", type: "branding" }
-  - { title: "ILLUSTRATION", type: "illustration" }
+  - { title: "ACCESSORIES", type: "accessories" }
+  - { title: "HANDMADE", type: "handmade" }
+  - { title: "DIGITAL", type: "digital" }
 
 portfolio-items:
-  - image: "assets/images/portfolio/item-1.png"
+  - image: "assets/images/portfolio/accessories/1.jpeg"
     url: "#"
     portfolio-type:
-      - type: "design"
-      - type: "illustration"
+      - type: "accessories"
 
-  - image: "assets/images/portfolio/item-2.png"
+  - image: "assets/images/portfolio/accessories/2.jpeg"
     url: "#"
     portfolio-type:
-      - type: "branding"
+      - type: "accessories"
 
-  - image: "assets/images/portfolio/item-3.png"
+  - image: "assets/images/portfolio/accessories/3.jpeg"
     url: "#"
     portfolio-type:
-      - type: "illustration"
+      - type: "accessories"
 
-  - image: "assets/images/portfolio/item-6.png"
+  - image: "assets/images/portfolio/accessories/4.jpeg"
     url: "#"
     portfolio-type:
-      - type: "design"
-      - type: "branding"
+      - type: "accessories"
 
-  - image: "assets/images/portfolio/item-8.png"
+  - image: "assets/images/portfolio/accessories/5.jpeg"
     url: "#"
     portfolio-type:
-      - type: "illustration"
+      - type: "accessories"
 
-  - image: "assets/images/portfolio/item-5.png"
+  - image: "assets/images/portfolio/accessories/6.jpeg"
     url: "#"
     portfolio-type:
-      - type: "design"
+      - type: "accessories"
 
   - image: "assets/images/portfolio/item-1.png"
     url: "#"
