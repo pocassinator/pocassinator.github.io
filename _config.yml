@@ -6,6 +6,8 @@ markdown: kramdown
 permalink: pretty
 plugins:
   - jekyll-sitemap
+  - jekyll-webp
+
 compress_html:
   clippings: all
   comments: all
@@ -24,6 +26,23 @@ include:
 sass:
   sass_dir: assets/scss
   style: compressed
+
+webp:
+  enabled: true
+  quality: 75
+  img_dir: ["/assets/images/portfolio"]
+  nested: true
+  # add ".gif" to the format list to generate webp for animated gifs as well
+  formats: [".jpeg", ".jpg", ".png", ".tiff"]
+  # File extensions for animated gif files 
+  gifs: [".gif"]
+  # Set to true to always regenerate existing webp files
+  regenerate: false
+  # List of files or directories to exclude
+  exclude: []
+  # append '.webp' to filename after original extension rather than replacing it.
+  # Default transforms `image.png` to `image.webp`, while changing to true transforms `image.png` to `image.png.webp`
+  append_ext: true
 
 # Exclude from processing.
 exclude:
