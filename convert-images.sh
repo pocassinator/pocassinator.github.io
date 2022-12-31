@@ -19,5 +19,6 @@ for directory in ${directories[@]}; do
     echo $image_file
     # Use cwebp to create a webp version of the image
     cwebp "$image_file" -o "${image_file}.webp"
+    rm -rf $image_file
   done
 done
