@@ -30,8 +30,11 @@ for directory in ${directories[@]}; do
   # Iterate over the screen widths
   for screen_width in ${screen_widths[@]}; do
     # Use convert to resize the image and save it to a file with a suffix indicating the screen width
-    convert "$image_file" -resize "${screen_width}x" "${base_name}_${screen_width}.jpg"
-    rm -f $image_file
+    for image_file in ${image_files[@]}; do
+      base_name=$(echo "$image_file" | rev | cut -f 2- -d '.' | rev)
+      convert "$image_file" -resize "${screen_width}x" "${base_name}_${screen_width}.jpg"
+      rm -f $image_file
+    done
   done
 
   image_files=($(find "$directory" -type f -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" -o -name "*.bmp"  -o -name "*.tiff" ))
