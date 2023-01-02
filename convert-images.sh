@@ -33,14 +33,13 @@ for directory in ${directories[@]}; do
     # Use convert to resize the image and save it to a file with a suffix indicating the screen width
     for image_file in ${image_files[@]}; do
       base_name=$(echo "$image_file" | rev | cut -f 2- -d '.' | rev)
-      convert "$image_file" -resize "${screen_width}x" "${base_name}_${screen_width}.jpg"
-      
+      convert "$image_file" -resize "${screen_width}x" "${base_name}_${screen_width}.jpg" &
     done
   done
 
   # Delete Original files
   for image_file in ${image_files[@]}; do
-    rm -f $image_file
+    rm -f $image_file &
   done
 
   image_files=($(find "$directory" -type f -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" -o -name "*.bmp"  -o -name "*.tiff" ))
@@ -51,8 +50,8 @@ for directory in ${directories[@]}; do
     base_name=$(echo "$image_file" | rev | cut -f 2- -d '.' | rev)
     echo $image_file
     # Use cwebp to create a webp version of the image
-    cwebp "$image_file" -o "${base_name}.webp"
-    npx avif --input="$image_file" --output "$directory"
+    cwebp "$image_file" -o "${base_name}.webp" &
+    npx avif --input="$image_file" --output "$directory" &
     # rm -rf $image_file
   done
 done
