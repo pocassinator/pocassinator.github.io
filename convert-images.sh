@@ -16,7 +16,7 @@ declare -a screen_widths
 # Create list to stroe process numbers
 declare -a PROCNUMS_CONVERT
 declare -a PROCNUMS_SCALE
-
+N = 5
 # Read the file and store the captured groups in the array
 while IFS= read -r line; do
   if [[ $line =~ max-width:([0-9]+)px ]]; then
@@ -36,6 +36,7 @@ for directory in ${directories[@]}; do
     ITERATOR=0
     # Use convert to resize the image and save it to a file with a suffix indicating the screen width
     for image_file in ${image_files[@]}; do
+      ((i=i%N)); ((i++==0)) && wait
       base_name=$(echo "$image_file" | rev | cut -f 2- -d '.' | rev)
       convert "$image_file" -resize "${screen_width}x" "${base_name}_${screen_width}.jpg" &
       PROCNUMS_SCALE[$ITERATOR]=$!
@@ -46,6 +47,7 @@ for directory in ${directories[@]}; do
   # Delete Original files
   ITERATOR=0
   for image_file in ${image_files[@]}; do
+    ((i=i%N)); ((i++==0)) && wait
     wait ${PROCNUMS_SCALE[$ITERATOR]}
     rm -f $image_file &
     let "ITERATOR=ITERATOR+1"
@@ -57,6 +59,7 @@ for directory in ${directories[@]}; do
   # Iterate over the array of image files
   ITERATOR=0
   for image_file in ${image_files[@]}; do
+    ((i=i%N)); ((i++==0)) && wait
     # Get the base name of the image file (i.e. the file name without the extension)
     base_name=$(echo "$image_file" | rev | cut -f 2- -d '.' | rev)
     # Use cwebp to create a webp version of the image
@@ -69,6 +72,7 @@ for directory in ${directories[@]}; do
   # Wait for files to be converted
   ITERATOR=0
   for image_file in ${image_files[@]}; do
+    ((i=i%N)); ((i++==0)) && wait
     wait ${PROCNUMS_CONVERT[$ITERATOR]}
     let "ITERATOR=ITERATOR+1"
   done
