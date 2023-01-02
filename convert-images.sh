@@ -15,10 +15,11 @@ for directory in ${directories[@]}; do
   # Iterate over the array of image files
   for image_file in ${image_files[@]}; do
     # Get the base name of the image file (i.e. the file name without the extension)
-    # base_name=$(basename "$image_file")
+    base_name=$($image_file | sed 's/\.[^.]*$//')
     echo $image_file
     # Use cwebp to create a webp version of the image
-    cwebp "$image_file" -o "${image_file}.webp"
-    rm -rf $image_file
+    cwebp "$image_file" -o "${base_name}.webp"
+    npx avif --input="$image_file" --output "${base_name}.avif"
+    # rm -rf $image_file
   done
 done

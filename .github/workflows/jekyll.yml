@@ -36,6 +36,7 @@ jobs:
         with:
           node-version: 16
       - run: npm install --global cwebp-bin
+      - run: npx avif
       # - run: ls -la /home/runner/work/pocassinator.github.io/pocassinator.github.io/assets/images/portfolio
       - run: chmod +x convert-images.sh && bash -x convert-images.sh
       - name: Setup Ruby
