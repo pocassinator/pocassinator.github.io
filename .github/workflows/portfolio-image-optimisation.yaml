@@ -3,7 +3,7 @@ name: Portfolio Image Optimisation Workflow
 on:
   push:
     branches: ["main"]
-    paths: ['assets/images/portfolio/']
+    paths: ['assets/images/portfolio/**']
 
 
   workflow_dispatch:
