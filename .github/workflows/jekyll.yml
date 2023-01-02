@@ -62,26 +62,11 @@ jobs:
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          # Optional, workflow file name or ID
-          # If not specified, will be inferred from run_id (if run_id is specified), or will be the current workflow
           workflow: portfolio-image-optimisation.yaml
-          # Optional, the status or conclusion of a completed workflow to search for
-          # Can be one of a workflow conclusion:
-          #   "failure", "success", "neutral", "cancelled", "skipped", "timed_out", "action_required"
-          # Or a workflow status:
-          #   "completed", "in_progress", "queued"
-          # Use the empty string ("") to ignore status or conclusion in the search
           workflow_conclusion: success
           name: portfolio
           path: assets/images/portfolio
-          # Optional, a directory where to extract artifact(s), defaults to the current directory
-          # path: extract_here
-          # Optional, check the workflow run to whether it has an artifact
-          # then will get the last available artifact from the previous workflow
-          # default false, just try to download from the last one
           check_artifacts:  false
-          # Optional, search for the last workflow run whose stored an artifact named as in `name` input
-          # default false
           search_artifacts: false
           skip_unpack: false
           if_no_artifact_found: fail
@@ -93,10 +78,7 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-      # - uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     commit_message: Add converted webp assets
-      - name: Upload artifact
+       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v1
 
