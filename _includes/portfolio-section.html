@@ -12,8 +12,8 @@
       <div class="col-lg-4 col-6 mb-4 shuffle-item">
         <div class="position-relative rounded hover-wrapper">
           <picture>
-            <source srcset="{{ site.baseurl }}/{{ item.image }}.avif" type="image/avif" />
-            <source srcset="{{ site.baseurl }}/{{ item.image }}.webp" type="image/webp" />
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: 'jpeg' }}.avif" type="image/avif" />
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: 'jpeg' }}.webp" type="image/webp" />
             <img decoding="async" loading="lazy" src="{{ site.baseurl }}/{{ item.image }}" alt="portfolio-image" class="img-fluid rounded w-100 d-block" />
           </picture>
           <div class="hover-overlay">
