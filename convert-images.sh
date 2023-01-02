@@ -15,8 +15,8 @@ declare -a screen_widths
 
 # Read the file and store the captured groups in the array
 while IFS= read -r line; do
-  if [[ $line =~ max-width:(\d+)px ]]; then
-    screen_widths+=( ${BASH_REMATCH[1]} )
+  if [[ $line =~ max-width:([0-9]+)px ]]; then
+    screen_widths+=( "${BASH_REMATCH[1]}" )
   fi
 done < "$filename"
 
