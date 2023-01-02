@@ -57,7 +57,7 @@ jobs:
       - shell: bash
         run: |
           rm -rf assets/images/portfolio
-          ls -la assets/images
+        # ls -la assets/images
       - name: Download portfolio artifact
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
@@ -85,9 +85,9 @@ jobs:
           search_artifacts: false
           skip_unpack: false
           if_no_artifact_found: fail
-      - shell: bash
-        run: |
-          ls -la assets/images/portfolio
+      # - shell: bash
+      #   run: |
+      #     ls -la assets/images/portfolio
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
