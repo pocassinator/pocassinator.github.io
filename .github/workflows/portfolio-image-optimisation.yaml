@@ -27,6 +27,8 @@ jobs:
           node-version: 16
       
       - run: npm install --global cwebp-bin
+
+      - run: sudo apt install -y imagemagick
       
       - run: npx avif
       
