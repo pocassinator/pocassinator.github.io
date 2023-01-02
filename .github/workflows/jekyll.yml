@@ -38,13 +38,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm install --global cwebp-bin
-      - run: npx avif
-      # - run: ls -la /home/runner/work/pocassinator.github.io/pocassinator.github.io/assets/images/portfolio
-      - run: chmod +x convert-images.sh && bash -x convert-images.sh
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 16
+      # - run: npm install --global cwebp-bin
+      # - run: npx avif
+      # # - run: ls -la /home/runner/work/pocassinator.github.io/pocassinator.github.io/assets/images/portfolio
+      # - run: chmod +x convert-images.sh && bash -x convert-images.sh
       - name: Setup Ruby
         uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
         with:
@@ -54,6 +54,13 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
+      - name: Download portfolio artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: portfolio
+      - shell: bash
+        run: |
+          ls -la
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
