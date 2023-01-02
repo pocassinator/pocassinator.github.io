@@ -19,7 +19,7 @@ for directory in ${directories[@]}; do
     echo $image_file
     # Use cwebp to create a webp version of the image
     cwebp "$image_file" -o "${base_name}.webp"
-    npx avif --input="$image_file" --output "${base_name}.avif"
+    npx avif --input="$image_file" --output "$directory"
     # rm -rf $image_file
   done
 done
