@@ -1,0 +1,39 @@
+name: Portfolio Image Optimisation Workflow
+
+on:
+  push:
+    branches: ["main"]
+    paths: ['assets/images/portfolio/']
+
+
+  workflow_dispatch:
+
+# Allow one concurrent deployment
+concurrency:
+  group: "image-optimisation"
+  cancel-in-progress: true
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      
+      - run: npm install --global cwebp-bin
+      
+      - run: npx avif
+      
+      - run: chmod +x convert-images.sh && bash -x convert-images.sh
+      
+      - name: Upload portfolio images to artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: assets/images/portfolio/
