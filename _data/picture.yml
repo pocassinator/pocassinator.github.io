@@ -1,0 +1,25 @@
+media_queries:
+    mobile-xs: 'max-width: 400px'
+    mobile: 'max-width: 575px'
+    tablet: 'min-width: 767px'
+    desktop: 'min-width: 991px'
+    desktop-lg: 'min-width: 1200px'
+
+formats: [avif, webp, original] # Order matters!
+
+format_quality:
+    jpg: 80
+    png: 85
+    webp: 75
+    avif: 70
+
+widths: [200, 400, 800, 1200, 1600] # Image widths, in pixels.
+
+image_options:
+      avif:
+        compression: av1
+        effort: 7 # Up to 9 from 0, 9=really slow
+      png:
+        compression: 9 # Up to 9, fast
+      webp:
+        effort: 5 # Up to 6 from 0, 4=default
