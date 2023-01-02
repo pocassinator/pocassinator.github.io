@@ -54,6 +54,10 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
+      - shell: bash
+        run: |
+          rm -rf assets/images/portfolio
+          ls -la assets/images
       - name: Download portfolio artifact
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
@@ -69,6 +73,7 @@ jobs:
           # Use the empty string ("") to ignore status or conclusion in the search
           workflow_conclusion: success
           name: portfolio
+          path: assets/images/portfolio
           # Optional, a directory where to extract artifact(s), defaults to the current directory
           # path: extract_here
           # Optional, check the workflow run to whether it has an artifact
@@ -82,7 +87,7 @@ jobs:
           if_no_artifact_found: fail
       - shell: bash
         run: |
-          ls -la
+          ls -la assets/images/portfolio
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
