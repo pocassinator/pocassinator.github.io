@@ -35,5 +35,5 @@ jobs:
       - name: Upload portfolio images to artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
+          name: portfolio
           path: assets/images/portfolio/
