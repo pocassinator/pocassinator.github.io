@@ -15,7 +15,7 @@ for directory in ${directories[@]}; do
   # Iterate over the array of image files
   for image_file in ${image_files[@]}; do
     # Get the base name of the image file (i.e. the file name without the extension)
-    base_name=$("$image_file" | rev | cut -f 2- -d '.' | rev)
+    base_name=$(echo I"$image_file" | rev | cut -f 2- -d '.' | rev)
     echo $image_file
     # Use cwebp to create a webp version of the image
     cwebp "$image_file" -o "${base_name}.webp"
