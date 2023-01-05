@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Script which looks for image files in the list of directories and uses cwebp to output webp versions of each image in the same directory as the original image with .webp extension
+# Script which looks for image files in the list of directories and 
+# generates images for various screen sizes, deletes the original files and then
+# uses cwebp and avif to output webp and avif versions of each image in the 
+# same directory as the original image with .webp and .avif extensions
 
 # Set the directories to search for image files
 directories=("assets/images/portfolio/handmade" 
