@@ -50,6 +50,8 @@ for directory in ${directories[@]}; do
     base_name=$(echo "$image_file" | rev | cut -f 2- -d '.' | rev)
     # Use cwebp to create a webp version of the image
     cwebp "$image_file" -o "${base_name}.webp"
-    npx avif --input="$image_file" --output "$directory" --lossless --effort 6 --quality 80
+    npx avif --input="$image_file" --output "$directory" --effort 3 --quality 70
   done
+  echo "Output Files"
+  ls -la $directory
 done
