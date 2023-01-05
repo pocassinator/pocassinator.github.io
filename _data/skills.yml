@@ -3,7 +3,7 @@
 
 skills-title: Skills
 skills:
-  - { name: Painting, color: "#fdb157", value: "91%" }
-  - { name: Procrastination, color: "#9473e6", value: "100%" }
-  - { name: Digital Art, color: "#bdecf6", value: "82%" }
-  - { name: Handicraft, color: "#ffbcaa", value: "77%" }
+  - { name: Painting, color: "#fdb157", value: "91%" , url: "/portfolio"}
+  - { name: Procrastination, color: "#9473e6", value: "100%", url: "/about" }
+  - { name: Digital Art, color: "#bdecf6", value: "82%", url: "/portfolio"}
+  - { name: Handicraft, color: "#ffbcaa", value: "77%", url: "/portfolio" }

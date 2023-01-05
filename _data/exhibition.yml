@@ -1,0 +1,41 @@
+#-------------------------------
+# Exhibition Section
+
+exhibition-title: Exhibitions
+exhibition:
+  - {
+      name: Exhibition 1,
+      icon: "icon-1.png",
+      date: "Jan 2007 - Feb 2009",
+      organization: "India Habitat Center",
+    }
+  - {
+      name: Exhibition 2,
+      icon: "icon-2.png",
+      date: "Mar 2009 - Aug 2014",
+      organization: "AUGMEDIX",
+    }
+  - {
+      name: Exhibition 3,
+      icon: "icon-3.png",
+      date: "Sep 2014 - Present",
+      organization: "THEMEFISHER",
+    }
+  - {
+      name: Exhibition 4,
+      icon: "icon-3.png",
+      date: "Sep 2014 - Present",
+      organization: "THEMEFISHER",
+    }
+  - {
+      name: Exhibition 5,
+      icon: "icon-3.png",
+      date: "Sep 2014 - Present",
+      organization: "THEMEFISHER",
+    }
+  - {
+      name: Exhibition 6,
+      icon: "icon-3.png",
+      date: "Sep 2014 - Present",
+      organization: "THEMEFISHER",
+    }

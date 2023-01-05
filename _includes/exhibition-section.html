@@ -1,0 +1,21 @@
+{% if site.data.exhibition.exhibition %}
+<!-- exhibition -->
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-title">{{ site.data.exhibition.exhibition-title }}</h2>
+      </div>
+      {% for exhibition in site.data.exhibition.exhibition %}
+      <div class="col-lg-3 col-md-4 text-center">
+        <img src="{{ site.baseurl }}/assets/images/exhibition/{{ exhibition.icon }}" alt="{{ site.data.exhibition.exhibition-title }} icon">
+        <p class="mb-0">{{ exhibition.date }}</p>
+        <h4>{{ exhibition.name }}</h4>
+        <h6 class="text-light">{{ exhibition.organization }}</h6>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- ./exhibition -->
+{% endif %}

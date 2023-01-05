@@ -39,7 +39,7 @@ Things you can customize in `_data/settings.yml` (no HTML/CSS):
 - About Section
 - Team Section
 - Skills Section
-- Experience Section
+- Exhibition Section
 - Education Section
 - Services Section
 - Portfolio Section

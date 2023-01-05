@@ -4,20 +4,20 @@
 services-title: Services
 services:
   - {
-      name: UI Design,
+      name: Handmade Accessories,
       icon: ti-palette,
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Update icon and description",
       active: , # Add true to select section
     }
   - {
-      name: UX Design,
+      name: Digital Artwork,
       icon: ti-vector,
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Update icon and description",
       active: true, # Add true to select section
     }
   - {
-      name: Interaction Design,
+      name: Custom Artwork,
       icon: ti-panel,
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Update icon and description",
       active: ,# Add true to select section
     }
