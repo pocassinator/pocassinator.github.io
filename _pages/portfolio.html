@@ -8,11 +8,11 @@ title: Portfolio
     <div class="row mb-5">
       <div class="col-12">
         <div class="btn-group btn-group-toggle justify-content-center d-flex" data-toggle="buttons">
-          <label class="btn btn-sm btn-primary active">
+          <label class="btn btn-sm btn-primary rounded btn-portfolio active">
             <input type="radio" name="shuffle-filter" value="all" checked="checked" />All
           </label>
           {% for label in site.data.portfolio.portfolio-label %}
-          <label class="btn btn-sm btn-primary">
+          <label class="btn btn-sm rounded btn-portfolio btn-primary">
             <input type="radio" name="shuffle-filter" value="{{ label.type }}" />{{ label.title }}
           </label>
           {% endfor %}
