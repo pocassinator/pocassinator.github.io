@@ -19,9 +19,9 @@ title: Portfolio
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row shuffle-wrapper">
       {% for item in site.data.portfolio.portfolio-items %}
-      <div class="col-lg-4 col-6 mb-4" data-groups="[{% for portfolio in item.portfolio-type %}{% if forloop.first == true %}{% else %},{% endif %}&quot;{{ portfolio.type }}&quot;{% endfor %}]">
+      <div class="col-lg-4 col-6 mb-4 shuffle-item" data-groups="[{% for portfolio in item.portfolio-type %}{% if forloop.first == true %}{% else %},{% endif %}&quot;{{ portfolio.type }}&quot;{% endfor %}]">
         <div class="position-relative rounded hover-wrapper">
           <picture>
             <!-- mobile-xs  -->
