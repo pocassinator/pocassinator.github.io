@@ -23,7 +23,31 @@ title: Portfolio
       {% for item in site.data.portfolio.portfolio-items %}
       <div class="col-lg-4 col-6 mb-4 shuffle-item" data-groups="[{% for portfolio in item.portfolio-type %}{% if forloop.first == true %}{% else %},{% endif %}&quot;{{ portfolio.type }}&quot;{% endfor %}]">
         <div class="position-relative rounded hover-wrapper">
-          <img src="{{ site.baseurl }}/{{ item.image }}" alt="portfolio-image" class="img-fluid rounded w-100 d-block">
+          <picture>
+            <!-- mobile-xs  -->
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_400.avif" type="image/avif" media="(max-width:400px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_400.webp" type="image/webp" media="(max-width:400px)"/>
+            <!-- mobile  --> 
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_575.avif" type="image/avif" media="(max-width:575px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_575.webp" type="image/webp" media="(max-width:575px)"/>
+            <!-- tablet  --> 
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_767.avif" type="image/avif" media="(max-width:767px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_767.webp" type="image/webp" media="(max-width:767px)"/>
+            <!-- desktop  --> 
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_991.avif" type="image/avif" media="(max-width:991px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_991.webp" type="image/webp" media="(max-width:991px)"/>
+            <!-- desktop-lg  --> 
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_1200.avif" type="image/avif" media="(max-width:1200px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_1200.webp" type="image/webp" media="(max-width:1200px)"/>
+            <!-- Default - Desktop -->
+            <img decoding="async" loading="lazy" srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_991.jpg" alt="portfolio-image" class="img-fluid rounded w-100 d-block"  media="(min-width: 991px)" />
+
+            <!-- <source srcset="image-large.avif" type="image/avif" media="(min-width: 800px)">
+            <source srcset="image-small.webp" type="image/webp" media="(max-width: 799px)">
+            <source srcset="image-large.webp" type="image/webp" media="(min-width: 800px)"> -->
+            <!-- <img src="image-small.jpg" srcset="image-large.jpg" alt="Alt Text" media="(min-width: 800px)"> -->
+          </picture>
+          <!-- <img src="{{ site.baseurl }}/{{ item.image }}" alt="portfolio-image" class="img-fluid rounded w-100 d-block"> -->
           <div class="hover-overlay">
             <div class="hover-content">
               <a class="btn btn-light btn-sm" href="{{ item.url }}">view project</a>
