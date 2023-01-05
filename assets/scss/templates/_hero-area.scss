@@ -1,6 +1,8 @@
 .hero-area {
   padding: 300px 0 200px;
   position: relative;
+  overflow: hidden;
+
   @include tablet {
     padding: 250px 0 150px;
     overflow: hidden;
