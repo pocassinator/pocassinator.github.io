@@ -8,12 +8,12 @@ title: Portfolio
     <div class="row mb-5">
       <div class="col-12">
         <div class="btn-group btn-group-toggle justify-content-center d-flex" data-toggle="buttons">
-          <label class="btn btn-sm btn-primary rounded btn-portfolio active">
-            <input type="radio" name="shuffle-filter" value="all" checked="checked" />All
+          <label class="btn btn-sm btn-primary rounded btn-portfolio active" id="label_all">
+            <input type="radio" name="shuffle-filter" value="all" checked="checked" id="all"/>All
           </label>
           {% for label in site.data.portfolio.portfolio-label %}
-          <label class="btn btn-sm rounded btn-portfolio btn-primary">
-            <input type="radio" name="shuffle-filter" value="{{ label.type }}" />{{ label.title }}
+          <label class="btn btn-sm rounded btn-portfolio btn-primary" id="label_{{ label.type }}">
+            <input type="radio" name="shuffle-filter" value="{{ label.type }}" id="{{ label.type }}" />{{ label.title }}
           </label>
           {% endfor %}
         </div>
@@ -73,3 +73,17 @@ title: Portfolio
   </div>
 </section>
 <!-- /clients -->
+<script>
+  // TODO: WIP
+  window.onload = function (){
+    url = new URL(document.URL);
+    portfolio_type = url.searchParams.get('portfolio_type');
+    console.log(portfolio_type);
+    if (portfolio_type!= null && portfolio_type != ""){
+      document.getElementById("label_all").classList.remove('active');
+      document.getElementById("all").checked = false;
+      document.getElementById("label_"+portfolio_type).classList.add('active');
+      document.getElementById(portfolio_type).checked = true;
+    }
+  }
+</script>
