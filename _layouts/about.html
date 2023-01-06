@@ -44,7 +44,8 @@ layout: default
 {% include work-process-section.html %}
 
 {% include team-section.html %}
-  
+
+{% if site.data.clients.client-slider-items %} 
 <section class="section">
   <div class="container">
     <div class="row">
@@ -55,3 +56,4 @@ layout: default
     {% include client-slider.html %}
   </div>
 </section>
+{% endif %}

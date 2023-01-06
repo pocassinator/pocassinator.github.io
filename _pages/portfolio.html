@@ -62,6 +62,7 @@ title: Portfolio
 <!-- /portfolio -->
 
 <!-- clients -->
+{% if site.data.clients.client-slider-items %} 
 <section class="section bg-light">
   <div class="container">
     <div class="row">
@@ -72,6 +73,7 @@ title: Portfolio
     {% include client-slider.html %}
   </div>
 </section>
+{% endif %}
 <!-- /clients -->
 <script>
   // TODO: WIP

@@ -15,6 +15,7 @@ title: Blogs
 <!-- /blog -->
 
 <!-- clients -->
+{% if site.data.clients.client-slider-items %} 
 <section class="section bg-light">
   <div class="container">
     <div class="row">
@@ -25,4 +26,5 @@ title: Blogs
     {% include client-slider.html %}
   </div>
 </section>
+{% endif %}
 <!-- /clients -->
