@@ -6,5 +6,5 @@ hero:
 
 social:
   - { icon: "ti-instagram", link: "https://instagram.com/shrutisolanki1996" }
-  - { icon: "ti-shop", link: "/shop" }
+  - { icon: "ti-shopping-cart", link: "/shop" }
   - { icon: "ti-behance", link: "#" }
