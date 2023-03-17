@@ -16,6 +16,7 @@ menu:
   - { name: Portfolio, link: "/portfolio" }
   - { name: Blog, link: "/blog" }
   - { name: Contact, link: "/contact" }
+  - { name: Shop, link: "/shop" }
 
 #-------------------------------
 # Google Analytics Section
@@ -36,4 +37,4 @@ disqus-identifier: # Add your shortname for Disqus Comment. For example mr-brown
 # Contact Section
 
 contact-title: Contact Info
-contact-email: steve.fruits@email.com
+contact-email: hi@shrutisolanki.com
