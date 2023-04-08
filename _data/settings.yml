@@ -38,3 +38,5 @@ disqus-identifier: # Add your shortname for Disqus Comment. For example mr-brown
 
 contact-title: Contact Info
 contact-email: hi@shrutisolanki.com
+# Contact Form Submission - Formspark.io
+form_success_page: https://submit-form.com/tmmrx2Q6
