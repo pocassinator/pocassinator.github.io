@@ -1,0 +1,56 @@
+{% if site.data.portfolio.portfolio-home-items %}
+<!-- portfolio -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <a href="/about"><h2 class="section-title">Behind the Scenes</h2></a>
+      </div>
+    </div>
+    <div class="row shuffle-wrapper">
+      {% for item in site.data.about.bts-gallery-items %}
+      <div class="col-lg-4 col-6 mb-4 shuffle-item">
+        <div class="position-relative rounded hover-wrapper">
+          <picture>
+            <!-- mobile-xs  -->
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_400.avif" type="image/avif" media="(max-width:400px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_400.webp" type="image/webp" media="(max-width:400px)"/>
+            <!-- mobile  --> 
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_575.avif" type="image/avif" media="(max-width:575px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_575.webp" type="image/webp" media="(max-width:575px)"/>
+            <!-- tablet  --> 
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_767.avif" type="image/avif" media="(max-width:767px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_767.webp" type="image/webp" media="(max-width:767px)"/>
+            <!-- desktop  --> 
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_991.avif" type="image/avif" media="(max-width:991px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_991.webp" type="image/webp" media="(max-width:991px)"/>
+            <!-- desktop-lg  --> 
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_1200.avif" type="image/avif" media="(max-width:1200px)"/>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_1200.webp" type="image/webp" media="(max-width:1200px)"/>
+            <!-- Default - Desktop -->
+            <img decoding="async" loading="lazy" srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_400.jpg" alt="portfolio-image" class="img-fluid rounded w-100 d-block"  media="(min-width: 991px)" />
+
+            <!-- <source srcset="image-large.avif" type="image/avif" media="(min-width: 800px)">
+            <source srcset="image-small.webp" type="image/webp" media="(max-width: 799px)">
+            <source srcset="image-large.webp" type="image/webp" media="(min-width: 800px)"> -->
+            <!-- <img src="image-small.jpg" srcset="image-large.jpg" alt="Alt Text" media="(min-width: 800px)"> -->
+          </picture>
+
+          <!-- <picture>
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: 'jpeg' }}.avif" type="image/avif" />
+            <source srcset="{{ site.baseurl }}/{{ item.image | remove: 'jpeg' }}.webp" type="image/webp" />
+            <img decoding="async" loading="lazy" src="{{ site.baseurl }}/{{ item.image }}" alt="portfolio-image" class="img-fluid rounded w-100 d-block" />
+          </picture> -->
+          <!-- <div class="hover-overlay">
+            <div class="hover-content">
+              <a class="btn btn-light btn-sm" href="{{ item.url }}">view project</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- /portfolio -->
+{% endif %}
