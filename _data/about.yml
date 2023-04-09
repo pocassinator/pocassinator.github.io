@@ -12,7 +12,10 @@ blurb-btn-name: know more
 bts-gallery-items:
   - image: "assets/images/portfolio/accessories/1.jpeg"
     url: "#"
-
+# TODO: Instagram images not loading
+  # - image: "https://www.instagram.com/p/CXFsX-jPD4k/media/?size=l"
+  #   url: "#"
+  #   source: "instagram"
 # Work Process Section - Removed from the Page
 # work-process:
 #   - title: "Research and Plan"

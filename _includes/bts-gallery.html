@@ -11,6 +11,13 @@
       {% for item in site.data.about.bts-gallery-items %}
       <div class="col-lg-4 col-6 mb-4 shuffle-item">
         <div class="position-relative rounded hover-wrapper">
+          <!-- Check the source and load the image accordingly -->
+          {% if item.source == 'instagram' %}
+          <picture>
+            <source srcset="{{ item.image }}"/>
+            <img decoding="async" loading="lazy" srcset="{{ item.image }}" alt="{{ item.image }}" class="img-fluid rounded w-100 d-block" />
+          </picture>
+          {% else %}
           <picture>
             <!-- mobile-xs  -->
             <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_400.avif" type="image/avif" media="(max-width:400px)"/>
@@ -29,23 +36,14 @@
             <source srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_1200.webp" type="image/webp" media="(max-width:1200px)"/>
             <!-- Default - Desktop -->
             <img decoding="async" loading="lazy" srcset="{{ site.baseurl }}/{{ item.image | remove: '.jpeg' }}_400.jpg" alt="portfolio-image" class="img-fluid rounded w-100 d-block"  media="(min-width: 991px)" />
-
-            <!-- <source srcset="image-large.avif" type="image/avif" media="(min-width: 800px)">
-            <source srcset="image-small.webp" type="image/webp" media="(max-width: 799px)">
-            <source srcset="image-large.webp" type="image/webp" media="(min-width: 800px)"> -->
-            <!-- <img src="image-small.jpg" srcset="image-large.jpg" alt="Alt Text" media="(min-width: 800px)"> -->
           </picture>
-
-          <!-- <picture>
-            <source srcset="{{ site.baseurl }}/{{ item.image | remove: 'jpeg' }}.avif" type="image/avif" />
-            <source srcset="{{ site.baseurl }}/{{ item.image | remove: 'jpeg' }}.webp" type="image/webp" />
-            <img decoding="async" loading="lazy" src="{{ site.baseurl }}/{{ item.image }}" alt="portfolio-image" class="img-fluid rounded w-100 d-block" />
-          </picture> -->
-          <!-- <div class="hover-overlay">
+          {% endif %}
+          <a href="{{ item.url }}">
+          <div class="hover-overlay">
             <div class="hover-content">
-              <a class="btn btn-light btn-sm" href="{{ item.url }}">view project</a>
             </div>
-          </div> -->
+          </div>
+          </a>
         </div>
       </div>
       {% endfor %}
