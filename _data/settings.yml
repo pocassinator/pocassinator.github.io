@@ -16,7 +16,7 @@ menu:
   - { name: Portfolio, link: "/portfolio" }
   - { name: Blog, link: "/blog" }
   - { name: Contact, link: "/contact" }
-  - { name: Shop, link: "/shop" }
+  - { name: Shop, link: "https://www.etsy.com/in-en/shop/PocassinatorFinds" }
 
 #-------------------------------
 # Google Analytics Section
