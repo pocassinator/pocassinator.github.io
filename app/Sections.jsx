@@ -122,6 +122,9 @@ function InPublic() {
                   <h3 style={{ fontSize: "var(--fs-lg)" }}>{p.title}</h3>
                   {p.year && <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-faint)" }}>{p.year}</span>}
                 </div>
+                <div style={{ margin: "var(--space-3) 0 var(--space-4)" }}>
+                  <Plate src={p.image} label={p.title} ratio="16 / 9" caption={p.imageCaption || "image to come"} />
+                </div>
                 <EntryBody item={p} />
               </div>
             ))}
@@ -133,6 +136,9 @@ function InPublic() {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "var(--space-3)", marginBottom: "var(--space-2)" }}>
                 <h3 style={{ fontSize: "var(--fs-lg)" }}>Unconference 2026 — The Hallucinating Archive</h3>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-faint)" }}>28 Mar 2026 · launch</span>
+              </div>
+              <div style={{ margin: "var(--space-3) 0 var(--space-4)" }}>
+                <Plate label="Unconference 2026" ratio="16 / 9" caption="The Hallucinating Archive launch — image to come" />
               </div>
               <EntryBody item={{
                 meta: "Unconference 2026 · ARISA Foundation · Goethe-Institut, Pune · 28 March 2026",
@@ -157,6 +163,9 @@ function InPublic() {
                   <h3 style={{ fontSize: "var(--fs-lg)" }}>Beyond the Lines <span style={{ color: "var(--text-faint)", fontWeight: 400 }}>— Unconference 2025</span></h3>
                   {p.year && <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-faint)" }}>{p.year}</span>}
                 </div>
+                <div style={{ margin: "var(--space-3) 0 var(--space-4)" }}>
+                  <Plate src={p.image} label={p.title} ratio="16 / 9" caption={p.imageCaption || "image to come"} />
+                </div>
                 <EntryBody item={p} />
               </div>
             ))}
@@ -164,6 +173,9 @@ function InPublic() {
 
           <Collapsible title="Pedagogical practice & learning" count="ongoing"
             summary="Teaching as another site of the same inquiry — learning built around each young person.">
+            <div style={{ margin: "0 0 var(--space-5)", maxWidth: "64ch" }}>
+              <Plate label="classroom / teaching" ratio="16 / 9" caption="In the classroom, NEXT School — image to come" />
+            </div>
             <div className="longread" style={{ maxWidth: "64ch" }}>
               <p>I work as an advisor at NEXT School, Mulund — India’s first Big Picture school, where learning is built around each young person rather than a fixed syllabus. As a Homeroom Advisor in the Middle Years I teach Visual Arts across the Middle and Primary Years (and, briefly, Language &amp; Literature).</p>
               <p style={{ color: "var(--ink-200)" }}>Much of the work is one-to-one: building individualised learning plans and walking with students through self-directed, real-world passion projects — from 3D modelling and illustration to chess and research in psychology. The classroom becomes another site of the same inquiry that drives the practice.</p>
@@ -172,6 +184,11 @@ function InPublic() {
 
           <Collapsible title="Exhibitions" count={window.EXHIBITIONS.length + " shows"}
             summary="Eighteen group shows across India and one international (Warsaw) — chronological.">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "var(--space-4)", marginBottom: "var(--space-6)" }}>
+              <Plate label="exhibition view" ratio="4 / 3" caption="Exhibition view — image to come" />
+              <Plate label="exhibition view" ratio="4 / 3" caption="Exhibition view — image to come" />
+              <Plate label="exhibition view" ratio="4 / 3" caption="Exhibition view — image to come" />
+            </div>
             <div>
               {window.EXHIBITIONS.map((e, i) => <ExhibitionLine key={i} {...e} last={i === window.EXHIBITIONS.length - 1} />)}
             </div>
@@ -368,6 +385,11 @@ function Wares() {
       <section style={{ ...wrapStyle, maxWidth: "var(--content-narrow)" }}>
         <PageHead kicker="Take home" title="Wares"
           lede="Prints and small things live on a separate shop. This page is a single quiet door out." />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "var(--space-5)", marginBottom: "var(--space-7)" }}>
+          <Plate label="ware" ratio="1 / 1" caption="Product — image to come" />
+          <Plate label="ware" ratio="1 / 1" caption="Product — image to come" />
+          <Plate label="ware" ratio="1 / 1" caption="Product — image to come" />
+        </div>
         <Button variant="outline" icon="↗">Visit the shop</Button>
       </section>
     </main>

@@ -19,8 +19,8 @@ const NAV_ITEMS = [
   ["The Hallucinating Archive", "Interactive installation & research"],
   ["Unmaking", "Research & Writing"],
   ["In Public", "Exhibitions & Workshops"],
-  ["About", "Intro & bio"],
   ["Making", "Art, Digital & Design"],
+  ["About", "Intro & bio"],
 ];
 const NAV_WORDS = [["Field Notes", "blog · art · aesthetics · learning"], ["Loose Threads", "notes, process, WIP"]];
 

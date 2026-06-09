@@ -66,6 +66,11 @@ function Archive() {
           </p>
         </div>
         <Button variant="solid" href="https://tha.shrutisolanki.com" onClick={(e) => e.preventDefault()}>Enter the live Archive</Button>
+
+        {/* installation still — image to come */}
+        <div style={{ marginTop: "var(--space-7)", maxWidth: "var(--content-narrow)" }}>
+          <Plate label="installation still" ratio="16 / 9" caption="The Hallucinating Archive — installation view (image to come)" />
+        </div>
       </section>
 
       {/* index + body */}
@@ -99,23 +104,39 @@ function Archive() {
             </div>
           ))}
 
+          {/* stills & diagrams — images to come */}
+          <section style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-6)", marginBottom: "var(--space-8)" }}>
+            <Eyebrow style={{ marginBottom: "var(--space-4)" }}>Stills &amp; diagrams</Eyebrow>
+            <div style={{ display: "grid", gridTemplateColumns: phone ? "1fr" : "1fr 1fr", gap: "var(--space-5)" }}>
+              <Plate label="system architecture" ratio="4 / 3" caption="System architecture (diagram to come)" />
+              <Plate label="two-track flow" ratio="4 / 3" caption="Two-track flow: input → two outputs (diagram to come)" />
+              <Plate label="projection still" ratio="4 / 3" caption="Track 2 — projected monologue over Delhi–Bombay footage (still to come)" />
+              <Plate label="input → outputs sample" ratio="4 / 3" caption="One message, two readings (sample to come)" />
+            </div>
+          </section>
+
           {/* references */}
-          <section style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-6)" }}>
-            <Eyebrow style={{ marginBottom: "var(--space-4)" }}>References · selected</Eyebrow>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "var(--space-3)", maxWidth: "var(--measure-mono)" }}>
-              {["Dewey, J. — Art as Experience (1934)", "Greene, M. — Releasing the Imagination (1995)",
-                "Eisner, E. — The Arts and the Creation of Mind (2002)", "Merleau-Ponty, M. — Phenomenology of Perception (1945)",
-                "Danto, A. C. — The Transfiguration of the Commonplace (1981)", "Ahmed, S. — affect & orientation"].map((r) => (
-                <li key={r} style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-faint)", display: "flex", gap: "var(--space-3)" }}>
-                  <span style={{ color: "var(--sage)" }}>—</span>{r}
-                </li>
-              ))}
-            </ul>
+          <section>
+            <RefList title="References · selected" refs={[
+              "Dewey, J. — Art as Experience (1934)", "Greene, M. — Releasing the Imagination (1995)",
+              "Eisner, E. — The Arts and the Creation of Mind (2002)", "Merleau-Ponty, M. — Phenomenology of Perception (1945)",
+              "Danto, A. C. — The Transfiguration of the Commonplace (1981)", "Ahmed, S. — affect & orientation"]} />
             <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-ghost)", fontStyle: "italic", marginTop: "var(--space-6)" }}>
               This is a working overview of the project — it is evolving, and more will follow as the research develops.
             </p>
           </section>
           <WipNote>A fuller, more detailed account of the Archive — stills, system diagrams and the full research frame — is coming soon.</WipNote>
+
+          {/* credit */}
+          <section style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-6)", marginTop: "var(--space-7)" }}>
+            <Eyebrow style={{ marginBottom: "var(--space-3)" }}>Credit</Eyebrow>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-muted)", lineHeight: "var(--lh-normal)", maxWidth: "60ch", margin: 0 }}>
+              Tech &amp; automation wizard of the project — and of this website —{" "}
+              <span style={{ color: "var(--text)" }}>Prashant Solanki</span>, my brother.{" "}
+              <a href="https://www.instagram.com/borderline.incriminating" target="_blank" rel="noopener noreferrer"
+                style={{ color: "var(--sage)", whiteSpace: "nowrap" }}>@borderline.incriminating&nbsp;↗</a>
+            </p>
+          </section>
         </div>
       </section>
     </main>

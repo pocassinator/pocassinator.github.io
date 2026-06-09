@@ -116,6 +116,11 @@ function PaperPage({ paperId, onNavigate }) {
         <Eyebrow style={{ marginBottom: "var(--space-3)" }}>{paper.kind}</Eyebrow>
         <h1 style={{ fontSize: "clamp(1.9rem, 5vw, var(--fs-2xl))", letterSpacing: "var(--ls-tight)", lineHeight: "var(--lh-tight)", marginBottom: "var(--space-6)", textWrap: "balance" }}>{paper.title}</h1>
 
+        {/* header image — image to come */}
+        <div style={{ margin: "0 0 var(--space-7)" }}>
+          <Plate src={paper.image} label="image" ratio="16 / 9" caption={paper.imageCaption || "image to come"} />
+        </div>
+
         <div className="longread" style={{ maxWidth: "none" }}>
           {paper.body.map((para, i) => (
             <p key={i} style={i === 0 ? { fontFamily: "var(--font-serif)", fontSize: "var(--fs-lg)", color: "var(--ink-100)", lineHeight: "var(--lh-relaxed)" } : null}>{para}</p>
@@ -139,18 +144,7 @@ function PaperPage({ paperId, onNavigate }) {
           </div>
         )}
 
-        {paper.refs && paper.refs.length > 0 && (
-          <div style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-5)", marginTop: "var(--space-7)" }}>
-            <Eyebrow style={{ marginBottom: "var(--space-4)" }}>References</Eyebrow>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
-              {paper.refs.map((r, i) => (
-                <li key={i} style={{ display: "flex", gap: "var(--space-3)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-faint)", lineHeight: "var(--lh-normal)" }}>
-                  <span style={{ color: "var(--sage)" }}>—</span><span>{r}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <RefList refs={paper.refs} />
 
         {related.length > 0 && (
           <div style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-5)", marginTop: "var(--space-6)" }}>
@@ -204,6 +198,11 @@ function FieldNotePage({ noteId, onNavigate }) {
         <h1 style={{ fontSize: "clamp(1.9rem, 5vw, var(--fs-2xl))", letterSpacing: "var(--ls-tight)", lineHeight: "var(--lh-tight)", marginBottom: "var(--space-3)", textWrap: "balance" }}>{note.title}</h1>
         <div style={{ display: "flex", gap: "var(--space-3)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-faint)", marginBottom: "var(--space-6)" }}>
           <span>{note.date}</span><span>· {note.read} read</span>
+        </div>
+
+        {/* header image — image to come */}
+        <div style={{ margin: "0 0 var(--space-7)" }}>
+          <Plate src={note.image} label="image" ratio="16 / 9" caption={note.imageCaption || "image to come"} />
         </div>
 
         <div className="longread" style={{ maxWidth: "none" }}>

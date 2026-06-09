@@ -17,7 +17,7 @@ function Lightbox({ work, onClose, onNavigate }) {
       <div onClick={(e) => e.stopPropagation()} style={{ display: "grid", gridTemplateColumns: phone ? "1fr" : "1.4fr 1fr", gap: phone ? "var(--space-4)" : "var(--space-7)",
         maxWidth: "1040px", width: "100%", maxHeight: "86vh", background: "var(--paper-800)",
         border: "1px solid var(--border-strong)", borderRadius: "var(--radius-sm)", boxShadow: "var(--shadow-pop)", overflow: "hidden" }}>
-        <Plate label={work.title} ratio={phone ? "4 / 3" : "1 / 1"} style={{ minHeight: phone ? "240px" : "440px", height: "100%", borderRadius: 0, border: 0 }} />
+        <Plate src={work.image} label={work.title} ratio={phone ? "4 / 3" : "1 / 1"} style={{ minHeight: phone ? "240px" : "440px", height: "100%", borderRadius: 0, border: 0 }} />
         <div style={{ padding: phone ? "var(--space-5)" : "var(--space-7) var(--space-7) var(--space-7) 0", overflowY: "auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
             <Eyebrow>{work.series}</Eyebrow>
@@ -54,7 +54,7 @@ function GalleryFigure({ work, onOpen }) {
   return (
     <figure style={{ margin: 0, cursor: "pointer" }} onClick={() => onOpen(work)}
       onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}>
-      <Plate label={work.title} ratio="1 / 1"
+      <Plate src={work.image} label={work.title} ratio="1 / 1"
         style={{ borderColor: h ? "var(--sage-deep)" : "var(--border)", transition: "border-color var(--dur)" }} />
       <figcaption style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginTop: "var(--space-3)", gap: "var(--space-3)" }}>
         <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text)" }}>{work.title}{work.suffix ? <span style={{ color: "var(--text-ghost)" }}> · {work.suffix}</span> : null}</span>
@@ -74,7 +74,7 @@ function CaseStrip({ title, sub, items }) {
       <div style={{ display: "grid", gridTemplateColumns: phone ? "1fr" : "repeat(3, 1fr)", gap: "var(--space-6)", marginTop: "var(--space-6)" }}>
         {items.map((it) => (
           <article key={it.id}>
-            <Plate label={it.title} ratio="4 / 3" />
+            <Plate src={it.image} label={it.title} ratio="4 / 3" />
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginTop: "var(--space-3)", gap: "var(--space-3)" }}>
               <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text)" }}>{it.title}</span>
               {it.year && <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-ghost)" }}>{it.year}</span>}

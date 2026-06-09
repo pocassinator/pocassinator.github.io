@@ -131,6 +131,11 @@ function ThreadCard({ item }) {
           <p key={i} style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-muted)", lineHeight: "var(--lh-normal)", margin: "0 0 var(--space-2)" }}>{para}</p>
         ))
       )}
+      {(item.image || item.attribution) && (
+        <div style={{ marginTop: "var(--space-4)" }}>
+          <Plate src={item.image} label="image" ratio="4 / 3" caption={item.attribution || "image to come"} />
+        </div>
+      )}
     </div>
   );
 }

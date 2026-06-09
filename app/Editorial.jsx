@@ -148,6 +148,39 @@ function Collapsible({ title, summary, count, defaultOpen = false, children }) {
   );
 }
 
+/* ---------- expandable academic references (collapsed by default) ----------
+   Shared by the essay reader, the Archive, and anywhere references appear. */
+function RefList({ refs, title = "References", defaultOpen = false, style }) {
+  const [open, setOpen] = React.useState(defaultOpen);
+  const [h, setH] = React.useState(false);
+  if (!refs || !refs.length) return null;
+  return (
+    <div style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-5)", marginTop: "var(--space-7)", ...style }}>
+      <button onClick={() => setOpen((o) => !o)} aria-expanded={open}
+        onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
+        style={{ appearance: "none", background: "none", border: 0, cursor: "pointer", padding: 0, width: "100%",
+          display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", textTransform: "uppercase",
+          letterSpacing: "var(--ls-label)", color: open || h ? "var(--sage)" : "var(--text-faint)", transition: "color var(--dur)" }}>{title}</span>
+        <span style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-ghost)" }}>
+          {refs.length}
+          <span aria-hidden="true" style={{ fontSize: "var(--fs-md)", lineHeight: 1, width: "1ch", textAlign: "center",
+            color: open || h ? "var(--sage)" : "var(--text-faint)", transition: "color var(--dur)" }}>{open ? "−" : "+"}</span>
+        </span>
+      </button>
+      {open && (
+        <ul className="fade-in" style={{ listStyle: "none", margin: "var(--space-4) 0 0", padding: 0, display: "flex", flexDirection: "column", gap: "var(--space-3)", maxWidth: "var(--measure-mono)" }}>
+          {refs.map((r, i) => (
+            <li key={i} style={{ display: "flex", gap: "var(--space-3)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-faint)", lineHeight: "var(--lh-normal)" }}>
+              <span style={{ color: "var(--sage)" }}>—</span><span>{r}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 /* ---------- a warm WIP closing note, shared across sections ---------- */
 function WipNote({ children, style }) {
   return (

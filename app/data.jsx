@@ -276,8 +276,8 @@ const SITE_MAP = {
   "The Hallucinating Archive": [],
   Unmaking: ["Essays", "More coming"],
   "In Public": ["Participatory Works", "Workshops", "Exhibitions"],
-  About: [],
   Making: ["Making A Mess", "Digital Art & Illustrations", "Design", "Explorations"],
+  About: [],
 };
 
 /* lookup helper: every connectable node by id, for the mycelium */
