@@ -1,0 +1,98 @@
+/* ============================================================
+   BASE — Shruti Solanki Design System
+   Minimal reset + element defaults wired to the tokens, so any
+   page that links styles.css inherits the warm-dark, monospace,
+   quiet baseline. A few documented utility classes for the
+   recurring conventions (eyebrow labels, dotted rules, the
+   fades-with-use mark). No component styling lives here.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: var(--type-body);
+  letter-spacing: var(--ls-normal);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Typewriter headings — same family, hierarchy by size/weight */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--text);
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-2xl); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+h4 { font-size: var(--fs-md); }
+
+p { margin: 0 0 1em; text-wrap: pretty; }
+
+/* Links default to sage; on hover the ink DIMS (fades with use) */
+a {
+  color: var(--link);
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out);
+}
+a:hover { color: var(--link-hover); }
+a:focus-visible { outline: none; box-shadow: var(--focus); border-radius: var(--radius-xs); }
+
+img, svg, video { display: block; max-width: 100%; }
+
+::selection { background: var(--sage-wash-strong); color: var(--ink-100); }
+
+:focus-visible { outline: none; box-shadow: var(--focus); }
+
+/* ---- Recurring utility conventions ---- */
+
+/* Eyebrow / spaced uppercase mono label */
+.eyebrow {
+  font: var(--type-caption);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-faint);
+}
+
+/* The serif long-read column (Field Notes / Unmaking only) */
+.longread {
+  font: var(--type-read);
+  color: var(--ink-200);
+  max-width: var(--measure-serif);
+}
+
+/* Thin dotted divider — the brand's only rule */
+.rule { border: 0; border-top: var(--rule-dotted); margin: var(--space-6) 0; }
+.rule--dashed { border-top: var(--rule-dashed); }
+
+/* A handled mark that stays slightly dimmed once "used" */
+.is-used { opacity: var(--used-opacity); }
+
+/* Optional faint paper grain — drop on a fixed full-bleed layer */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--grain);
+  background-size: 160px 160px;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  z-index: var(--z-rule);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}

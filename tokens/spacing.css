@@ -1,0 +1,66 @@
+/* ============================================================
+   SPACING & LAYOUT — Shruti Solanki Design System
+   4px base grid. Generous margins, lots of empty space — the
+   quiet is structural. Tabular monospace alignment throughout.
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (4px base) ---- */
+  --space-0:  0;
+  --space-px: 1px;
+  --space-1:  0.25rem;  /* 4 */
+  --space-2:  0.5rem;   /* 8 */
+  --space-3:  0.75rem;  /* 12 */
+  --space-4:  1rem;     /* 16 */
+  --space-5:  1.5rem;   /* 24 */
+  --space-6:  2rem;     /* 32 */
+  --space-7:  3rem;     /* 48 */
+  --space-8:  4rem;     /* 64 */
+  --space-9:  6rem;     /* 96 */
+  --space-10: 8rem;     /* 128 */
+  --space-11: 10rem;    /* 160 */
+  --space-12: 12rem;    /* 192 — section breathing room */
+
+  /* ---- Page layout ---- */
+  --gutter:        2rem;    /* mobile horizontal page padding */
+  --gutter-wide:   4rem;    /* desktop horizontal page padding */
+  --content-max:   1180px;  /* max content column */
+  --content-narrow: 760px;  /* reading column (essays, Archive) */
+  --cortex-gutter: 5rem;    /* margin zone where the Cortex grows in */
+
+  /* ---- Component spacing ---- */
+  --pad-card:    1.5rem;
+  --pad-tight:   1rem;
+  --pad-input:   0.625rem 0.875rem;
+  --pad-button:  0.625rem 1.125rem;
+  --gap-tight:   0.5rem;
+  --gap:         1rem;
+  --gap-loose:   2rem;
+
+  /* ---- Timeline (the reverse-chron spine) ---- */
+  --timeline-rail:   1px;     /* the vertical stem */
+  --timeline-indent: 2.5rem;  /* node-to-content offset */
+  --timeline-node:   7px;     /* spore-dot diameter */
+
+  /* ---- Corner radii — sharp / archival. Near-zero by default ---- */
+  --radius-0:   0;
+  --radius-xs:  1px;
+  --radius-sm:  2px;     /* tags, inputs, cards — barely softened */
+  --radius:     3px;
+  --radius-md:  4px;
+  --radius-pill: 999px;  /* the Timeline⇄Mycelium toggle, switches only */
+
+  /* ---- Borders ---- */
+  --bw:       1px;    /* @kind spacing */
+  --bw-thick: 2px;    /* @kind spacing */
+
+  /* ---- Z-index scale ---- */
+  --z-base:    0;     /* @kind other */
+  --z-rule:    10;    /* @kind other */
+  --z-sticky:  100;   /* @kind other */
+  --z-nav:     200;   /* @kind other */
+  --z-cortex:  400; /* @kind other */ /* the margin neural map */
+  --z-overlay: 500;   /* @kind other */
+  --z-dialog:  600; /* @kind other */ /* lightbox, dialogs */
+  --z-toast:   800;   /* @kind other */
+}

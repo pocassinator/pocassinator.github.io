@@ -1,71 +1,23 @@
-# Kross Jekyll
+# shrutisolanki.com
 
-Kross Jekyll Creative Portfolio Template ported from [Kross HTML Template](https://themefisher.com/products/kross/)
+Portfolio for **Shruti Solanki** — *Artist · Educator · Researcher*.
 
+A quiet, minimal, duotone (warm-dark + greys + sage) typewriter portfolio. Built to the
+**Shruti Solanki Design System**: Courier Prime throughout, sage as the sole accent, and a
+single expressive gesture — the hand-drawn line network (Mycelium / Cortex).
 
-<!--ts-->
-* [Kross Jekyll](#kross-jekyll)
-   * [Demo](#demo)
-   * [Setup](#setup)
-   * [Customize](#customize)
-   * [Deployment](#deployment)
-   * [Reporting Issues](#reporting-issues)
-   * [Technical Support or Questions](#technical-support-or-questions)
-   * [License](#license)
-<!--te-->
+## Structure
 
+- `index.html` — entry point. Loads React + Babel (standalone, via CDN) and the app.
+- `app/` — the portfolio screens & primitives (in-browser JSX, no build step).
+- `styles.css` + `tokens/` — the design-system stylesheet and design tokens.
+- `assets/` — the line-network / cursor-net gestures and true-colour artwork.
 
-## Demo
+## Deploy
 
-| Homepage  | About  | Blog  | Portfolio  | Contact  |
-|---|---|---|---|---|
-| ![Homepage](https://user-images.githubusercontent.com/37659754/58154295-1a9c5300-7c93-11e9-992c-ad8d2ff8d99f.png) | ![About](https://user-images.githubusercontent.com/37659754/58154317-28ea6f00-7c93-11e9-914b-b7e5f1cdab0e.png) | ![Blog](https://user-images.githubusercontent.com/37659754/58154339-369ff480-7c93-11e9-9568-53b7ebdc6b2d.png) | ![portfolio](https://user-images.githubusercontent.com/37659754/58154368-491a2e00-7c93-11e9-8900-f5a6abe0a61d.png) | ![contact](https://user-images.githubusercontent.com/37659754/58154403-57684a00-7c93-11e9-9cea-ea28253a6f6a.png) |
+Static site, no build. Pushed to `main`, published to GitHub Pages by
+`.github/workflows/deploy.yml` and served at **shrutisolanki.com** (see `CNAME`).
+`.nojekyll` disables Jekyll processing.
 
-[Live Preview](http://demo.themefisher.com/kross).
-
-## Setup
-
-To start your project, fork this repository
-After forking the repo, your site will be live immediately on your personal Github Pages account, e.g. `https://yourusername.github.io/your-repo-name/`.
-
-Make sure GitHub Pages is enabled for your repo. It might take some time for the site to propagate entirely.
-
-## Customize
-
-Things you can customize in `_data/settings.yml` (no HTML/CSS):
-
-- Theme General Settings ( name, logo, email, phone, address )
-- Hero Section
-- About Section
-- Team Section
-- Skills Section
-- Exhibition Section
-- Education Section
-- Services Section
-- Portfolio Section
-- Testimonials Section
-- Client Slider Section
-- Contact Section
-
-## Deployment
-
-To run the theme locally, navigate to the theme directory and run `bundle install` to install the dependencies, then run `jekyll serve` or `bundle exec jekyll serve` to start the Jekyll server.
-I would recommend checking the [Deployment Methods](https://jekyllrb.com/docs/deployment-methods/) page on Jekyll's website.
-
-## Reporting Issues
-
-We use GitHub Issues as the official bug tracker for the **Kross Theme**. Please Search [existing issues](https://github.com/themefisher/kross-jekyll/issues). It’s possible someone has already reported the same problem.
-If your problem or idea is not addressed yet, [open a new issue](https://github.com/themefisher/kross-jekyll/issues/new)
-
-## Technical Support or Questions
-
-If you have questions or need help integrating the product please [contact us](mailto:themefisher@gmail.com) instead of opening an issue.
-
-<!-- licence -->
-## License
-
-Copyright (c) 2016 - Present, Designed & Developed by [Themefisher](https://themefisher.com)
-
-**Code License:** Released under the [MIT](https://github.com/themefisher/kross-jekyll/blob/main/LICENSE) license.
-
-**Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to share those images.
+The full design system source (guidelines, components, briefs, uploads) lives outside this
+repo and is intentionally **not** published.

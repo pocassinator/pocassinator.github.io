@@ -1,0 +1,83 @@
+/* ============================================================
+   COLORS — Shruti Solanki Design System
+   Duotone, dark: warm near-black + a warm grey ink ramp + sage
+   as the SOLE chromatic accent. No other colours.
+   "Let the work be the colour" — chrome stays silent so artwork
+   (shown in true colour) carries all the chroma.
+   ============================================================ */
+
+:root {
+  /* ---- Base: dark olive page & lifted panels ---- */
+  --paper-950: #1C1F12;   /* sunken / deepest wells */
+  --paper-900: #2F341F;   /* THE PAGE — dark olive */
+  --paper-850: #363C25;   /* hairline fills, hover wells */
+  --paper-800: #3C4229;   /* lifted panels / cards */
+  --paper-750: #434A2F;   /* raised-on-raised, inputs */
+  --paper-700: #4B5235;   /* top elevation, chips */
+
+  /* ---- Ink: NEUTRAL greyscale ramp (no warm/green cast) ---- */
+  --ink-100: #ECECEC;     /* primary ink — bright, "fresh" */
+  --ink-200: #C4C4C4;     /* secondary text */
+  --ink-300: #969696;     /* muted / captions */
+  --ink-400: #6B6B6B;     /* faint / metadata */
+  --ink-500: #454545;     /* ghost / borders-on-ink / disabled */
+
+  /* ---- Sage: the sole accent (used sparingly) ---- */
+  --sage:        #9CAF88; /* links, active, network lines, the toggle */
+  --sage-bright: #BFD0AC; /* hover-up of an active mark, nodes, focus */
+  --sage-deep:   #74855F; /* pressed, deep edges, dim threads */
+
+  /* ---- Alpha washes (derived; keep chroma faint) ---- */
+  --sage-wash:        rgba(156, 175, 136, 0.10);
+  --sage-wash-strong: rgba(156, 175, 136, 0.18);
+  --sage-thread:      rgba(156, 175, 136, 0.55); /* dotted hyphae */
+  --sage-thread-dim:  rgba(156, 175, 136, 0.28);
+  --ink-veil:         rgba(236, 236, 236, 0.06); /* faint neutral fills */
+
+  /* ---- Semantic surfaces ---- */
+  --bg:          var(--paper-900);
+  --bg-sunken:   var(--paper-950);
+  --bg-raised:   var(--paper-800);
+  --bg-overlay:  rgba(18, 20, 11, 0.82); /* scrim behind dialogs/lightbox */
+  --surface:     var(--paper-800);
+  --surface-input: var(--paper-750);
+
+  /* ---- Semantic text ---- */
+  --text:        var(--ink-100);
+  --text-muted:  var(--ink-300);
+  --text-faint:  var(--ink-400);
+  --text-ghost:  var(--ink-500);
+  --text-on-sage: var(--paper-900); /* ink on a sage fill */
+
+  /* ---- Links & the "fades with use" mechanic ----
+     Default: bright ink / sage. Hover DIMS toward mid-grey with a
+     faint sage cast (the mark wears where touched). Visited stays
+     slightly dimmed. Never drop dimmed text below 4.5:1. */
+  --link:         var(--sage);
+  --link-hover:   #859179;          /* dimmed sage-grey */
+  --link-visited: var(--ink-300);
+  --used-opacity:   0.62; /* @kind other */ /* visited works / handled marks */
+  --fresh-opacity:  1; /* @kind other */
+
+  /* ---- Borders, rules, dividers (neutral) ---- */
+  --border:        rgba(236, 236, 236, 0.11);
+  --border-soft:   rgba(236, 236, 236, 0.06);
+  --border-strong: rgba(236, 236, 236, 0.17);
+  --rule:          var(--ink-500);  /* thin dotted divider colour */
+
+  /* ---- The line network (Mycelium + Cortex) ---- */
+  --thread:      var(--sage-thread);     /* edges / hyphae / axons */
+  --thread-dim:  var(--sage-thread-dim);
+  --node:        var(--sage-bright);     /* spore-dot / neuron */
+  --node-idle:   var(--ink-400);
+  --pulse:       var(--sage-bright);     /* synaptic signal */
+  --you-are-here: var(--sage-bright);
+
+  /* ---- Status (kept extremely quiet; rarely used) ---- */
+  --positive: #9CAF88;   /* reuse sage — no new colours */
+  --warning:  #C9A86A;   /* warm ochre, deploy only when essential */
+  --danger:   #BD7A63;   /* faded clay, errors only */
+
+  /* ---- Focus ---- */
+  --focus-ring: var(--sage-bright);
+}

@@ -1,0 +1,62 @@
+/* ============================================================
+   EFFECTS — Shruti Solanki Design System
+   Almost no chrome. Shadows are nearly absent; depth comes from
+   warm panel steps + hairline borders. Motion is calm: gentle
+   fades, the "grows with use" thread. Honour reduced-motion.
+   ============================================================ */
+
+:root {
+  /* ---- Elevation (used very sparingly on this flat, dark page) ---- */
+  --shadow-none:  none;
+  --shadow-flat:  0 1px 0 rgba(0, 0, 0, 0.45);
+  --shadow-raise: 0 1px 0 rgba(0, 0, 0, 0.5), 0 10px 28px -16px rgba(0, 0, 0, 0.6);
+  --shadow-pop:   0 24px 64px -24px rgba(0, 0, 0, 0.72); /* dialog / lightbox */
+
+  /* ---- Sage glow — for an active node / focused mark ---- */
+  --glow-sage:  0 0 0 1px rgba(156, 175, 136, 0.40), 0 0 20px -6px rgba(156, 175, 136, 0.38);
+  --glow-node:  0 0 12px -2px rgba(191, 208, 172, 0.55);
+
+  /* ---- Hairlines & dotted rules (the only dividers) ---- */
+  --hairline:    1px solid var(--border);
+  --hairline-strong: 1px solid var(--border-strong);
+  /* dotted rule convention: border-top: 1px dotted var(--rule); */
+  --rule-dotted: 1px dotted var(--rule); /* @kind other */
+  --rule-dashed: 1px dashed var(--rule); /* @kind other */
+
+  /* ---- Focus ring ---- */
+  --focus:        0 0 0 2px var(--paper-900), 0 0 0 3px var(--focus-ring);
+  --focus-inset:  inset 0 0 0 1px var(--focus-ring);
+
+  /* ---- Motion: easing ---- */
+  --ease-out:    cubic-bezier(0.20, 0.60, 0.20, 1); /* @kind other */ /* calm settle */
+  --ease-in-out: cubic-bezier(0.40, 0.00, 0.20, 1);    /* @kind other */
+  --ease-thread: cubic-bezier(0.65, 0.00, 0.35, 1); /* @kind other */ /* hyphae growth */
+
+  /* ---- Motion: duration ---- */
+  --dur-fast:  120ms; /* @kind other */
+  --dur:       240ms; /* @kind other */
+  --dur-slow:  480ms; /* @kind other */
+  --dur-fade:  720ms; /* @kind other */ /* the calm hero / content fade-in */
+  --dur-grow:  900ms; /* @kind other */ /* a thread growing along its path */
+
+  /* ---- Paper grain (optional faint texture overlay) ----
+     Apply on a ::before with: background-image: var(--grain);
+     opacity: var(--grain-opacity); mix-blend-mode: overlay; */
+  --grain-opacity: 0.04; /* @kind other */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); /* @kind other */
+
+  /* ---- Dotted stroke geometry (for SVG thread/cortex lines) ---- */
+  --thread-dash:  "1 6"; /* @kind other */ /* stroke-dasharray for hand-drawn hyphae */
+  --thread-width: 1.25;     /* @kind other */
+}
+
+/* ---- Reduced motion: states are instant, threads appear drawn ---- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms; /* @kind other */
+    --dur: 0ms; /* @kind other */
+    --dur-slow: 0ms; /* @kind other */
+    --dur-fade: 0ms; /* @kind other */
+    --dur-grow: 0ms; /* @kind other */
+  }
+}

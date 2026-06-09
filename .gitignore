@@ -72,3 +72,9 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 # End of https://www.toptal.com/developers/gitignore/api/ruby,jekyll
+# Design system source + zip kept locally, not published
+/Design System/
+/Design System.zip
+.DS_Store
+_site/
+.jekyll-cache/

@@ -1,0 +1,10 @@
+/* ============================================================
+   FONTS — Shruti Solanki Design System
+   The single voice: Courier Prime (typewriter) — body, UI, headers,
+   captions, nav, the Archive, everything.
+   Newsreader (quiet serif) is permitted for LONG READS ONLY
+   (Field Notes essays, Unmaking papers) when pure mono tires.
+   Sourced from Google Fonts. See readme.md › FONTS for self-hosting.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap');
