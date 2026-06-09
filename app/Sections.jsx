@@ -274,6 +274,28 @@ function About() {
             <p style={{ color: "var(--text-muted)" }}>Based between Delhi and Mumbai, working through making, writing and teaching.</p>
 
             <div style={{ borderTop: "1px dotted var(--rule)", marginTop: "var(--space-6)", paddingTop: "var(--space-5)" }}>
+              <Eyebrow style={{ marginBottom: "var(--space-4)" }}>Connect</Eyebrow>
+              <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
+                {[
+                  { label: "Email", text: "shrutisolanki1226@gmail.com", href: "mailto:shrutisolanki1226@gmail.com" },
+                  { label: "Instagram", text: "@shrutiunmakes", href: "https://www.instagram.com/shrutiunmakes", ext: true },
+                  { label: "LinkedIn", text: "Shruti Solanki", href: "https://www.linkedin.com/in/shruti-solanki-176b28251", ext: true },
+                  { label: "Behance", text: "behance.net/shrutisolanki", href: "https://www.behance.net/shrutisolanki", ext: true },
+                ].map((c) => (
+                  <li key={c.label} style={{ display: "grid", gridTemplateColumns: "96px 1fr", columnGap: "var(--space-4)", alignItems: "baseline" }}>
+                    <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", textTransform: "uppercase", letterSpacing: "var(--ls-label)", color: "var(--text-faint)" }}>{c.label}</span>
+                    <a href={c.href} {...(c.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--sage)")}
+                      style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-base)", color: "var(--sage)", textDecoration: "none", transition: "color var(--dur)" }}>
+                      {c.text}{c.ext ? " ↗" : ""}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div style={{ borderTop: "1px dotted var(--rule)", marginTop: "var(--space-6)", paddingTop: "var(--space-5)" }}>
               <Eyebrow style={{ marginBottom: "var(--space-4)" }}>Education</Eyebrow>
               <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
                 {[
@@ -292,10 +314,6 @@ function About() {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div style={{ display: "flex", gap: "var(--space-4)", marginTop: "var(--space-6)" }}>
-              <Button variant="link" icon="" href="mailto:shrutisolanki1226@gmail.com" onClick={(e) => e.preventDefault()}>shrutisolanki1226@gmail.com</Button>
             </div>
           </div>
         </div>
