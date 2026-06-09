@@ -404,7 +404,8 @@ function Wares() {
           <Plate label="ware" ratio="1 / 1" caption="Product — image to come" />
           <Plate label="ware" ratio="1 / 1" caption="Product — image to come" />
         </div>
-        <Button variant="outline" icon="↗">Visit the shop</Button>
+        <Button variant="outline" icon="↗" href="https://www.franklywearing.com/creator/shruti-solanki-3c8d602b-d0ad-4f80-a955-884d7bd88080"
+          target="_blank" rel="noopener noreferrer">Visit the shop</Button>
       </section>
     </main>
   );
