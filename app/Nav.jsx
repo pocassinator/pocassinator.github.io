@@ -74,11 +74,7 @@ function MobileNav({ current, onNavigate }) {
             {rowBtn("Wares", "merch ↗", "var(--text-muted)")}
             {rowBtn("Contact", "say hello", "var(--text-muted)")}
           </nav>
-          <div style={{ display: "flex", gap: "var(--space-5)", marginTop: "var(--space-7)", color: "var(--text-faint)" }}>
-            <a href="#" style={{ color: "inherit" }} aria-label="Instagram"><Icon name="instagram" size={20} /></a>
-            <a href="#" style={{ color: "inherit" }} aria-label="LinkedIn"><Icon name="linkedin" size={20} /></a>
-            <a href="#" style={{ color: "inherit" }} aria-label="GitHub"><Icon name="github" size={20} /></a>
-          </div>
+          <Socials size={20} gap="var(--space-5)" style={{ marginTop: "var(--space-7)", color: "var(--text-faint)" }} />
         </div>
       )}
     </React.Fragment>
@@ -132,11 +128,7 @@ function Nav({ current, onNavigate }) {
             style={{ appearance: "none", background: "none", border: 0, cursor: "pointer", padding: "4px 0",
               fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)",
               color: current === "Contact" ? "var(--sage)" : "var(--text-muted)" }}>Contact</button>
-          <div style={{ display: "flex", gap: "var(--space-3)", color: "var(--text-faint)" }}>
-            <a href="#" style={{ color: "inherit" }} aria-label="Instagram"><Icon name="instagram" size={16} /></a>
-            <a href="#" style={{ color: "inherit" }} aria-label="LinkedIn"><Icon name="linkedin" size={16} /></a>
-            <a href="#" style={{ color: "inherit" }} aria-label="GitHub"><Icon name="github" size={16} /></a>
-          </div>
+          <Socials size={16} gap="var(--space-3)" style={{ color: "var(--text-faint)" }} />
         </div>
       </div>
     </header>

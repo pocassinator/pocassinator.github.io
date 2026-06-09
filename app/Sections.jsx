@@ -335,11 +335,7 @@ function Contact() {
             </div>
             <div>
               <Eyebrow style={{ marginBottom: "var(--space-3)" }}>Elsewhere</Eyebrow>
-              <div style={{ display: "flex", gap: "var(--space-4)", color: "var(--text-muted)" }}>
-                <a href="#" style={{ color: "inherit" }} aria-label="Instagram"><Icon name="instagram" /></a>
-                <a href="#" style={{ color: "inherit" }} aria-label="LinkedIn"><Icon name="linkedin" /></a>
-                <a href="#" style={{ color: "inherit" }} aria-label="GitHub"><Icon name="github" /></a>
-              </div>
+              <Socials />
             </div>
           </div>
           {status === "sent" ? (

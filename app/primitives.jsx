@@ -123,7 +123,35 @@ function Icon({ name, size = 18 }) {
   );
 }
 
-Object.assign(window, { useReduced, Eyebrow, Tag, Button, DottedRule, ModeToggle, Icon });
+/* social links — Instagram · Behance · LinkedIn. Behance has no clean outline
+   glyph, so it uses the brand "Bē" mono lockup per the design system. */
+const SOCIAL_LINKS = [
+  { label: "Instagram", href: "https://www.instagram.com/shrutiunmakes", icon: "instagram" },
+  { label: "Behance", href: "https://www.behance.net/shrutisolanki", text: "Bē" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/shruti-solanki-176b28251", icon: "linkedin" },
+];
+function SocialLink({ item, size = 18 }) {
+  const [h, setH] = React.useState(false);
+  return (
+    <a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={item.label}
+      onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
+      style={{ color: h ? "var(--sage)" : "inherit", display: "inline-flex", alignItems: "center",
+        justifyContent: "center", width: size + "px", height: size + "px", transition: "color var(--dur)" }}>
+      {item.icon
+        ? <Icon name={item.icon} size={size} />
+        : <span aria-hidden="true" style={{ fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: Math.round(size * 0.82) + "px", lineHeight: 1, letterSpacing: "-0.03em" }}>{item.text}</span>}
+    </a>
+  );
+}
+function Socials({ size = 18, gap = "var(--space-4)", style }) {
+  return (
+    <div style={{ display: "flex", gap, alignItems: "center", color: "var(--text-muted)", ...style }}>
+      {SOCIAL_LINKS.map((s) => <SocialLink key={s.label} item={s} size={size} />)}
+    </div>
+  );
+}
+
+Object.assign(window, { useReduced, Eyebrow, Tag, Button, DottedRule, ModeToggle, Icon, Socials });
 
 function useIsPhone(bp) {
   bp = bp || 760;

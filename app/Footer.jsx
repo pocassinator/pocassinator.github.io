@@ -16,11 +16,7 @@ function Footer({ onNavigate }) {
             maxWidth: "34ch", marginTop: "var(--space-3)", lineHeight: "var(--lh-normal)" }}>
             Working through making and writing, between Delhi and Mumbai.
           </p>
-          <div style={{ display: "flex", gap: "var(--space-4)", marginTop: "var(--space-5)", color: "var(--text-muted)" }}>
-            <a href="#" style={{ color: "inherit" }} aria-label="Instagram"><Icon name="instagram" /></a>
-            <a href="#" style={{ color: "inherit" }} aria-label="LinkedIn"><Icon name="linkedin" /></a>
-            <a href="#" style={{ color: "inherit" }} aria-label="GitHub"><Icon name="github" /></a>
-          </div>
+          <Socials style={{ marginTop: "var(--space-5)" }} />
         </div>
         <div>
           <Eyebrow style={{ marginBottom: "var(--space-4)" }}>Reach</Eyebrow>
