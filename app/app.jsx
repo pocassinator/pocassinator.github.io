@@ -38,11 +38,14 @@ function App() {
   } else if (String(page).startsWith("paper:")) {
     const id = page.slice(6);
     Screen = () => <PaperPage paperId={id} onNavigate={navigate} />;
+  } else if (String(page).startsWith("note:")) {
+    const id = page.slice(5);
+    Screen = () => <FieldNotePage noteId={id} onNavigate={navigate} />;
   } else {
     Screen = screens[page] || screens["Home"];
   }
 
-  const chromeCurrent = (String(page).startsWith("theme:") || String(page).startsWith("paper:")) ? "" : page;
+  const chromeCurrent = (String(page).startsWith("theme:") || String(page).startsWith("paper:") || String(page).startsWith("note:")) ? "" : page;
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Nav current={chromeCurrent} onNavigate={navigate} />

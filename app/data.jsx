@@ -182,12 +182,30 @@ const EXHIBITIONS = [
 
 /* ---- Field Notes (public essays expanded from the formal work) ---- */
 const FIELD_NOTES = [
-  { date: "Oct 2024", title: "Colour outside the paper", tag: "Learning", read: "5 min",
-    note: "On unlearning, and the courage to make the mark you were told not to make." },
-  { date: "2024", title: "What the brain does when it beholds", tag: "Aesthetics", read: "8 min",
-    note: "Neuroaesthetics, and why a painting is an event in the nervous system." },
-  { date: "2024", title: "The sublime, in abstraction", tag: "Art", read: "7 min",
-    note: "Where awe lives when the figure leaves the frame." },
+  { id: "colour-outside-the-paper", date: "Oct 2024", title: "Colour outside the paper", tag: "Learning", read: "5 min",
+    source: "pedagogy-of-chaos", themes: ["unlearning", "chaos"],
+    note: "On unlearning, and the courage to make the mark you were told not to make.",
+    body: [
+      "Somewhere early, most of us learn to stay inside the lines. The page has an edge, and the edge means don’t. We get so good at obeying it that the rule outlives the paper — it keeps running, quietly, under everything we later try to make.",
+      "I think about this every time I hand someone a marker and point at a wall instead of a sheet. There is always a pause — wait, really? — and in that pause something loosens. The mark you were told not to make turns out to be the one with all the feeling in it. Unlearning isn’t forgetting; it’s giving yourself permission again.",
+      "Colour outside the paper. Let it flow. Feel it. The instruction sounds like play, but underneath it is courage: the small, repeated bravery of trusting your own hand over a rule you inherited and never agreed to.",
+    ] },
+  { id: "brain-beholds", date: "2024", title: "What the brain does when it beholds", tag: "Aesthetics", read: "8 min",
+    source: "ma-dissertation", themes: ["aesthetic experience", "neuroaesthetics"],
+    note: "Neuroaesthetics, and why a painting is an event in the nervous system.",
+    body: [
+      "Stand in front of a painting that moves you and something measurable happens. Before you can say why, your body has already answered — attention sharpens, breath changes, the eye is pulled across the canvas as though the surface were choreography.",
+      "Neuroaesthetics is the unglamorous name for a beautiful idea: that beholding is not passive. A painting is an event in the nervous system — the brain doesn’t receive an image so much as build one, predicting, completing, feeling its way toward meaning. Perception, it turns out, is already a kind of thinking.",
+      "This is why I keep insisting that aesthetic experience belongs at the centre of learning, not at its decorative edge. When we behold, we are doing cognition with the whole body. The art isn’t only the thing on the wall; it’s what happens in the charged space between it and us.",
+    ] },
+  { id: "sublime-in-abstraction", date: "2024", title: "The sublime, in abstraction", tag: "Art", read: "7 min",
+    source: "language-of-abstraction", themes: ["the sublime", "abstraction"],
+    note: "Where awe lives when the figure leaves the frame.",
+    body: [
+      "The sublime used to need mountains — vast, slightly terrifying scenery that made you feel small in a way that felt, strangely, like being enlarged. Then abstraction took the figure out of the frame, and the question became: where does the awe go when there is nothing left to recognise?",
+      "It doesn’t leave. It relocates — into colour, scale, rhythm, the charged emptiness between marks. Kandinsky heard it as music; Rothko built rooms you could stand inside and be held by. Stripped of the picture, the feeling has nowhere to hide, so it arrives more directly, almost physically.",
+      "Abstraction, then, is not the absence of meaning but a different route to it. The sublime survives the loss of the figure because it was never really about the mountain. It was about us — standing before something larger than language, and staying.",
+    ] },
 ];
 
 /* ---- Loose Threads — notes, process, WIP, reflective-journal scraps.
@@ -267,7 +285,11 @@ const NODE_INDEX = {};
 [...WORKS, ...DIGITAL, ...PARTICIPATORY, ...WORKSHOPS].forEach((n) => { NODE_INDEX[n.id] = n; });
 NODE_INDEX["archive"] = { id: "archive", title: "The Hallucinating Archive", tags: ["archive", "AI / algorithmic"] };
 
+/* lookup: field-note posts by id, for the Field Notes reader */
+const FIELD_NOTE_INDEX = {};
+FIELD_NOTES.forEach((p) => { FIELD_NOTE_INDEX[p.id] = p; });
+
 Object.assign(window, {
   WORKS, SERIES, DIGITAL, DESIGN, PARTICIPATORY, WORKSHOPS, TESTIMONIALS,
-  EXHIBITIONS, FIELD_NOTES, LOOSE_THREADS, ARCHIVE_CHAPTERS, SITE_MAP, NODE_INDEX,
+  EXHIBITIONS, FIELD_NOTES, FIELD_NOTE_INDEX, LOOSE_THREADS, ARCHIVE_CHAPTERS, SITE_MAP, NODE_INDEX,
 });

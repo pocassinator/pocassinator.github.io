@@ -75,13 +75,16 @@ function NoteRow({ post, onNavigate }) {
   const [h, setH] = React.useState(false);
   return (
     <article onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
-      style={{ padding: "var(--space-5) 0", borderBottom: "1px dotted var(--rule)", cursor: "pointer" }}
-      onClick={() => onNavigate && onNavigate("Unmaking")}>
+      role="link" tabIndex={0}
+      onClick={() => onNavigate && onNavigate("note:" + post.id)}
+      onKeyDown={(e) => { if (e.key === "Enter") onNavigate && onNavigate("note:" + post.id); }}
+      style={{ padding: "var(--space-5) 0", borderBottom: "1px dotted var(--rule)", cursor: "pointer" }}>
       <div style={{ display: "flex", gap: "var(--space-3)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-faint)", marginBottom: "var(--space-2)" }}>
         <span style={{ color: "var(--sage)" }}>{post.tag}</span><span>{post.date}</span><span>· {post.read}</span>
       </div>
       <h3 style={{ fontSize: "var(--fs-lg)", color: h ? "var(--sage)" : "var(--text)", transition: "color var(--dur)" }}>{post.title}</h3>
       <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-muted)", marginTop: "var(--space-2)", maxWidth: "62ch", lineHeight: "var(--lh-normal)" }}>{post.note}</p>
+      <span style={{ display: "inline-block", marginTop: "var(--space-3)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: h ? "var(--sage)" : "var(--text-faint)", transition: "color var(--dur)" }}>Read the note →</span>
     </article>
   );
 }

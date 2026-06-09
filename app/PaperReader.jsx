@@ -171,4 +171,72 @@ function PaperPage({ paperId, onNavigate }) {
   );
 }
 
-Object.assign(window, { PaperPage, Reflections });
+/* FieldNotePage — a routed reader for a Field Notes post: the shorter, warmer
+   blog version of an Unmaking essay, with a link back to its formal source.
+   Reached via navigate("note:<id>"). */
+function FieldNotePage({ noteId, onNavigate }) {
+  const note = (window.FIELD_NOTE_INDEX || {})[noteId];
+  React.useEffect(() => { window.scrollTo({ top: 0, behavior: "auto" }); }, [noteId]);
+
+  const read = { maxWidth: "var(--content-narrow)", margin: "0 auto", padding: "0 var(--gutter-wide)" };
+  if (!note) {
+    return (
+      <main className="fade-in" style={{ paddingTop: "var(--space-9)" }}>
+        <section style={read}>
+          <p style={{ fontFamily: "var(--font-mono)", color: "var(--text-faint)" }}>That note isn’t here.</p>
+          <Button variant="link" icon="" onClick={() => onNavigate("Field Notes")}>← Back to Field Notes</Button>
+        </section>
+      </main>
+    );
+  }
+  const source = note.source ? (window.ESSAY_INDEX || {})[note.source] : null;
+
+  return (
+    <main className="fade-in" style={{ paddingTop: "var(--space-7)" }}>
+      <article style={read}>
+        <button onClick={() => onNavigate("Field Notes")}
+          style={{ appearance: "none", background: "none", border: 0, padding: 0, cursor: "pointer",
+            fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-faint)", marginBottom: "var(--space-6)" }}>
+          ← Field Notes
+        </button>
+
+        <Eyebrow style={{ marginBottom: "var(--space-3)" }}>Field Notes · {note.tag}</Eyebrow>
+        <h1 style={{ fontSize: "clamp(1.9rem, 5vw, var(--fs-2xl))", letterSpacing: "var(--ls-tight)", lineHeight: "var(--lh-tight)", marginBottom: "var(--space-3)", textWrap: "balance" }}>{note.title}</h1>
+        <div style={{ display: "flex", gap: "var(--space-3)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-faint)", marginBottom: "var(--space-6)" }}>
+          <span>{note.date}</span><span>· {note.read} read</span>
+        </div>
+
+        <div className="longread" style={{ maxWidth: "none" }}>
+          {note.body.map((para, i) => (
+            <p key={i} style={i === 0 ? { fontFamily: "var(--font-serif)", fontSize: "var(--fs-lg)", color: "var(--ink-100)", lineHeight: "var(--lh-relaxed)" } : null}>{para}</p>
+          ))}
+        </div>
+
+        {source && (
+          <div style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-5)", marginTop: "var(--space-7)" }}>
+            <Eyebrow style={{ marginBottom: "var(--space-2)" }}>The formal version</Eyebrow>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-muted)", lineHeight: "var(--lh-normal)", maxWidth: "60ch", marginBottom: "var(--space-3)" }}>
+              This is the shorter, warmer telling. The fuller argument — with its sources and citations — lives in Unmaking.
+            </p>
+            <Button variant="outline" size="sm" onClick={() => onNavigate("paper:" + source.id)}>Read “{source.title}” in Unmaking</Button>
+          </div>
+        )}
+
+        {note.themes && note.themes.length > 0 && (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)", marginTop: "var(--space-6)" }}>
+            {note.themes.map((t) => (
+              <button key={t} onClick={() => onNavigate("theme:" + t)}
+                style={{ appearance: "none", background: "none", border: 0, padding: 0, cursor: "pointer" }}>
+                <Tag>{t}</Tag>
+              </button>
+            ))}
+          </div>
+        )}
+
+        <Reflections paperId={"note:" + note.id} />
+      </article>
+    </main>
+  );
+}
+
+Object.assign(window, { PaperPage, FieldNotePage, Reflections });

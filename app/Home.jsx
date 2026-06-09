@@ -108,20 +108,36 @@ function Home({ onNavigate }) {
 
       {/* latest field notes */}
       <section style={{ ...wrap, marginTop: "var(--space-10)" }}>
-        <Eyebrow style={{ marginBottom: "var(--space-5)" }}>Latest from Field Notes</Eyebrow>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "var(--space-5)" }}>
+          <Eyebrow>Latest from Field Notes</Eyebrow>
+          <button onClick={() => onNavigate("Field Notes")}
+            style={{ appearance: "none", background: "none", border: 0, padding: 0, cursor: "pointer",
+              fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--sage)" }}>All notes →</button>
+        </div>
         <div style={{ display: "grid", gridTemplateColumns: phone ? "1fr" : "repeat(3, 1fr)", gap: "var(--space-6)" }}>
-          {window.FIELD_NOTES.map((p) => (
-            <article key={p.title} style={{ borderTop: "1px solid var(--border-strong)", paddingTop: "var(--space-4)" }}>
-              <div style={{ display: "flex", gap: "var(--space-3)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-faint)" }}>
-                <span style={{ color: "var(--sage)" }}>{p.tag}</span><span>{p.date}</span><span>· {p.read}</span>
-              </div>
-              <h3 style={{ fontSize: "var(--fs-md)", margin: "var(--space-3) 0 var(--space-2)" }}>{p.title}</h3>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-faint)", lineHeight: "var(--lh-normal)" }}>{p.note}</p>
-            </article>
-          ))}
+          {window.FIELD_NOTES.map((p) => <FieldNoteCard key={p.id} post={p} onNavigate={onNavigate} />)}
         </div>
       </section>
     </main>
+  );
+}
+
+function FieldNoteCard({ post, onNavigate }) {
+  const [h, setH] = React.useState(false);
+  return (
+    <article role="link" tabIndex={0}
+      onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
+      onClick={() => onNavigate("note:" + post.id)}
+      onKeyDown={(e) => { if (e.key === "Enter") onNavigate("note:" + post.id); }}
+      style={{ borderTop: "1px solid", borderColor: h ? "var(--sage-deep)" : "var(--border-strong)",
+        paddingTop: "var(--space-4)", cursor: "pointer", transition: "border-color var(--dur) var(--ease-out)" }}>
+      <div style={{ display: "flex", gap: "var(--space-3)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-faint)" }}>
+        <span style={{ color: "var(--sage)" }}>{post.tag}</span><span>{post.date}</span><span>· {post.read}</span>
+      </div>
+      <h3 style={{ fontSize: "var(--fs-md)", margin: "var(--space-3) 0 var(--space-2)", color: h ? "var(--sage)" : "var(--text)", transition: "color var(--dur)" }}>{post.title}</h3>
+      <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-faint)", lineHeight: "var(--lh-normal)" }}>{post.note}</p>
+      <span style={{ display: "inline-block", marginTop: "var(--space-3)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: h ? "var(--sage)" : "var(--text-faint)", transition: "color var(--dur)" }}>Read →</span>
+    </article>
   );
 }
 
