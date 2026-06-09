@@ -63,7 +63,7 @@ function Testimonial({ quote, name, role, flip }) {
   );
 }
 
-function WField({ label, placeholder, type = "text", textarea, half }) {
+function WField({ label, placeholder, type = "text", textarea, half, name, required }) {
   const [f, setF] = React.useState(false);
   const s = { width: "100%", boxSizing: "border-box", fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)",
     color: "var(--text)", background: "var(--surface-input)", border: "1px solid",
@@ -74,8 +74,8 @@ function WField({ label, placeholder, type = "text", textarea, half }) {
       <span style={{ display: "block", marginBottom: "var(--space-2)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)",
         textTransform: "uppercase", letterSpacing: "var(--ls-label)", color: "var(--text-faint)" }}>{label}</span>
       {textarea
-        ? <textarea rows={3} placeholder={placeholder} onFocus={() => setF(true)} onBlur={() => setF(false)} style={s} />
-        : <input type={type} placeholder={placeholder} onFocus={() => setF(true)} onBlur={() => setF(false)} style={s} />}
+        ? <textarea rows={3} name={name} placeholder={placeholder} onFocus={() => setF(true)} onBlur={() => setF(false)} style={s} />
+        : <input type={type} name={name} required={required} placeholder={placeholder} onFocus={() => setF(true)} onBlur={() => setF(false)} style={s} />}
     </label>
   );
 }
@@ -83,10 +83,35 @@ function WField({ label, placeholder, type = "text", textarea, half }) {
 function InterestForm() {
   const [intent, setIntent] = React.useState("participate");
   const phone = window.useIsPhone ? window.useIsPhone() : false;
+  const formRef = React.useRef(null);
+  const { status, submit } = window.useFormSubmit(window.SS_FORMS.workshop);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const fd = new FormData(formRef.current);
+    await submit({
+      name: fd.get("name"), email: fd.get("email"), city: fd.get("city"),
+      country: fd.get("country"), note: fd.get("note"),
+      intent: intent === "host" ? "Host one" : "Take part",
+    });
+  };
+
+  const note = {
+    sending: { c: "var(--text-faint)", t: "Sending…" },
+    error: { c: "var(--text-muted)", t: "Something went wrong sending that. Please email hi@shrutisolanki.com instead." },
+    unconfigured: { c: "var(--text-faint)", t: "This form isn't connected yet — please write to hi@shrutisolanki.com and I'll get back to you." },
+  }[status];
+
   return (
     <div style={{ border: "1px dotted var(--rule)", borderRadius: "var(--radius-sm)", padding: "var(--space-7)",
       background: "var(--paper-850)", marginTop: "var(--space-6)" }}>
       <Eyebrow style={{ marginBottom: "var(--space-3)" }}>Be part of the next one</Eyebrow>
+      {status === "sent" ? (
+        <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text)", maxWidth: "60ch", lineHeight: "var(--lh-normal)" }}>
+          Thank you — your interest is noted. If I'm planning something near you, I'll be in touch.
+        </p>
+      ) : (
+      <React.Fragment>
       <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-muted)", maxWidth: "60ch", lineHeight: "var(--lh-normal)", marginBottom: "var(--space-5)" }}>
         The workshops travel. Tell me where you're based — if I'm planning or conducting something in your city,
         I'll reach out. Whether you'd like to take part, or to host one where you are.
@@ -94,22 +119,25 @@ function InterestForm() {
       <div style={{ display: "flex", gap: "2px", padding: "3px", border: "1px solid var(--border-strong)", borderRadius: "var(--radius-pill)",
         background: "var(--paper-900)", width: "fit-content", marginBottom: "var(--space-5)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)" }}>
         {[["participate", "Take part"], ["host", "Host one"]].map(([v, l]) => (
-          <button key={v} onClick={() => setIntent(v)} style={{ appearance: "none", cursor: "pointer", border: 0,
+          <button key={v} type="button" onClick={() => setIntent(v)} style={{ appearance: "none", cursor: "pointer", border: 0,
             borderRadius: "var(--radius-pill)", padding: "0.45rem 0.9rem", fontFamily: "inherit", fontSize: "inherit",
             color: intent === v ? "var(--text-on-sage)" : "var(--text-muted)", background: intent === v ? "var(--sage)" : "transparent",
             transition: "background var(--dur), color var(--dur)" }}>{l}</button>
         ))}
       </div>
-      <form onSubmit={(e) => e.preventDefault()} style={{ display: "grid", gridTemplateColumns: phone ? "1fr" : "1fr 1fr", gap: "var(--space-4)" }}>
-        <WField label="Your name" placeholder="Name" half />
-        <WField label="Email" type="email" placeholder="you@example.com" half />
-        <WField label="City" placeholder="City" half />
-        <WField label="Country" placeholder="Country" half />
-        <WField label={intent === "host" ? "About the space / who you'd host for (optional)" : "A line about you (optional)"} placeholder="Optional" textarea />
-        <div style={{ gridColumn: "1 / -1" }}>
-          <Button variant="solid">{intent === "host" ? "Register interest to host" : "Register interest to join"}</Button>
+      <form ref={formRef} onSubmit={onSubmit} style={{ display: "grid", gridTemplateColumns: phone ? "1fr" : "1fr 1fr", gap: "var(--space-4)" }}>
+        <WField label="Your name" name="name" placeholder="Name" half required />
+        <WField label="Email" name="email" type="email" placeholder="you@example.com" half required />
+        <WField label="City" name="city" placeholder="City" half />
+        <WField label="Country" name="country" placeholder="Country" half />
+        <WField label={intent === "host" ? "About the space / who you'd host for (optional)" : "A line about you (optional)"} name="note" placeholder="Optional" textarea />
+        <div style={{ gridColumn: "1 / -1", display: "flex", alignItems: "center", gap: "var(--space-4)", flexWrap: "wrap" }}>
+          <Button variant="solid" disabled={status === "sending"}>{intent === "host" ? "Register interest to host" : "Register interest to join"}</Button>
+          {note && <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: note.c, maxWidth: "44ch", lineHeight: "var(--lh-normal)" }}>{note.t}</span>}
         </div>
       </form>
+      </React.Fragment>
+      )}
     </div>
   );
 }

@@ -250,10 +250,6 @@ const ARCHIVE_CHAPTERS = [
     "The next phase scales the Archive into a full immersive installation that doubles as a phenomenological, arts-based research site. The methodology is practitioner-led: I work simultaneously as artist, facilitator, and observer, generating data through participant reflections, conversations, visual and spatial responses, facilitation journals, embodied field notes, and affective-atmosphere mapping.",
     "The questions sharpen here — how do immersive aesthetic environments shape perception, regulation, and relational openness, and what happens to identity and meaning-making under conditions of digital fragmentation?",
   ] },
-  { n: "08", title: "Longer vision", kind: "track", body: [
-    "The longer aim is not an installation or a thesis, but a framework. I want to articulate a theory of aesthetic learning as becoming — a way of understanding learning environments (classrooms, workshops, immersive installations) as affective, perceptual, co-regulating ecologies rather than information-delivery systems.",
-    "The Archive is the laboratory for that idea: an artwork, a classroom, and a research environment at once, and the foundation for the work I am moving toward.",
-  ] },
 ];
 
 /* ---- Cortex: the whole site as a node graph (macro) ---- */

@@ -289,6 +289,18 @@ function About() {
 
 function Contact() {
   const phone = window.useIsPhone ? window.useIsPhone() : false;
+  const formRef = React.useRef(null);
+  const { status, submit } = window.useFormSubmit(window.SS_FORMS.contact);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const fd = new FormData(formRef.current);
+    await submit({ name: fd.get("name"), email: fd.get("email"), message: fd.get("message") });
+  };
+  const note = {
+    sending: { c: "var(--text-faint)", t: "Sending…" },
+    error: { c: "var(--text-muted)", t: "Something went wrong. Please email hi@shrutisolanki.com instead." },
+    unconfigured: { c: "var(--text-faint)", t: "This form isn't connected yet — please write to me directly using the addresses on the left." },
+  }[status];
   return (
     <main className="fade-in" style={{ paddingTop: "var(--space-8)" }}>
       <section style={{ ...wrapStyle, maxWidth: "var(--content-narrow)" }}>
@@ -313,19 +325,28 @@ function Contact() {
               </div>
             </div>
           </div>
-          <form onSubmit={(e) => e.preventDefault()} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-            <ContactField label="Your name" placeholder="Name" />
-            <ContactField label="Your email" placeholder="you@example.com" />
-            <ContactField label="Message" textarea placeholder="A thought, a question, a thread you want to pull…" />
-            <div><Button variant="solid">Send</Button></div>
+          {status === "sent" ? (
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text)", lineHeight: "var(--lh-normal)", maxWidth: "44ch" }}>
+              Thank you — your message is on its way. I read everything, and I'll write back.
+            </p>
+          ) : (
+          <form ref={formRef} onSubmit={onSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+            <ContactField label="Your name" name="name" placeholder="Name" required />
+            <ContactField label="Your email" name="email" type="email" placeholder="you@example.com" required />
+            <ContactField label="Message" name="message" textarea placeholder="A thought, a question, a thread you want to pull…" required />
+            <div style={{ display: "flex", alignItems: "center", gap: "var(--space-4)", flexWrap: "wrap" }}>
+              <Button variant="solid" disabled={status === "sending"}>Send</Button>
+              {note && <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: note.c, maxWidth: "40ch", lineHeight: "var(--lh-normal)" }}>{note.t}</span>}
+            </div>
           </form>
+          )}
         </div>
       </section>
     </main>
   );
 }
 
-function ContactField({ label, placeholder, textarea }) {
+function ContactField({ label, placeholder, textarea, name, type = "text", required }) {
   const [f, setF] = React.useState(false);
   const s = { width: "100%", boxSizing: "border-box", fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)",
     color: "var(--text)", background: "var(--surface-input)", border: "1px solid",
@@ -335,8 +356,8 @@ function ContactField({ label, placeholder, textarea }) {
     <label style={{ display: "block" }}>
       <span style={{ display: "block", marginBottom: "var(--space-2)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", textTransform: "uppercase", letterSpacing: "var(--ls-label)", color: "var(--text-faint)" }}>{label}</span>
       {textarea
-        ? <textarea rows={4} placeholder={placeholder} onFocus={() => setF(true)} onBlur={() => setF(false)} style={s} />
-        : <input placeholder={placeholder} onFocus={() => setF(true)} onBlur={() => setF(false)} style={s} />}
+        ? <textarea rows={4} name={name} required={required} placeholder={placeholder} onFocus={() => setF(true)} onBlur={() => setF(false)} style={s} />
+        : <input type={type} name={name} required={required} placeholder={placeholder} onFocus={() => setF(true)} onBlur={() => setF(false)} style={s} />}
     </label>
   );
 }

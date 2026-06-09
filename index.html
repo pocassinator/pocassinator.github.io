@@ -1,15 +1,29 @@
-<!-- @dsCard group="Portfolio" viewport="1280x900" name="Portfolio website" subtitle="Home · Making · The Archive · In Public — interactive" -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shruti Solanki — Artist · Educator · Researcher</title>
+<meta name="description" content="Shruti Solanki — artist, educator and researcher. A quiet portfolio of making, writing and research: paintings, The Hallucinating Archive, workshops and field notes. My work lives in a dynamic blend of control and chaos." />
+<meta name="author" content="Shruti Solanki" />
+<meta name="theme-color" content="#2F341F" />
+<link rel="canonical" href="https://shrutisolanki.com/" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Shruti Solanki" />
+<meta property="og:title" content="Shruti Solanki — Artist · Educator · Researcher" />
+<meta property="og:description" content="A quiet portfolio of making, writing and research. My work lives in a dynamic blend of control and chaos." />
+<meta property="og:url" content="https://shrutisolanki.com/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Shruti Solanki — Artist · Educator · Researcher" />
+<meta name="twitter:description" content="A quiet portfolio of making, writing and research. My work lives in a dynamic blend of control and chaos." />
+
 <link rel="stylesheet" href="styles.css" />
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; background: var(--bg); }
-  /* calm content fade-in (skipped under reduced-motion via tokens) */
   .fade-in { animation: ss-fade var(--dur-fade) var(--ease-out) both; }
   @keyframes ss-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .fade-in { animation: none; } }
@@ -23,21 +37,13 @@
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-thumb { background: var(--paper-700); border-radius: 999px; }
   ::-webkit-scrollbar-track { background: var(--paper-950); }
-  /* ---- responsive: shrink the layout tokens so inline var()-based
-     padding/measures reflow on tablets & phones without per-component edits ---- */
-  @media (max-width: 1024px) {
-    :root { --gutter-wide: 2.5rem; --cortex-gutter: 2.5rem; }
-  }
+  @media (max-width: 1024px) { :root { --gutter-wide: 2.5rem; --cortex-gutter: 2.5rem; } }
   @media (max-width: 760px) {
     :root {
-      --gutter-wide: 1.25rem;
-      --content-max: 100%;
-      --content-narrow: 100%;
-      --cortex-gutter: 1rem;
+      --gutter-wide: 1.25rem; --content-max: 100%; --content-narrow: 100%; --cortex-gutter: 1rem;
       --fs-4xl: 3rem; --fs-3xl: 2.3rem; --fs-2xl: 1.9rem; --fs-xl: 1.5rem;
       --space-12: 5rem; --space-11: 4rem; --space-10: 3.5rem; --space-9: 3rem; --space-8: 2.5rem;
     }
-    /* the live network sits behind headers — let touches scroll the page */
     canvas { touch-action: pan-y; }
   }
 </style>
@@ -50,27 +56,6 @@
     })();
   </script>
   <div id="root"></div>
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-  <script src="assets/line-network.js"></script>
-  <script src="assets/cursor-net.js"></script>
-  <script type="text/babel" src="app/primitives.jsx"></script>
-  <script type="text/babel" src="app/data.jsx"></script>
-  <script type="text/babel" src="app/essays.jsx"></script>
-  <script type="text/babel" src="app/Editorial.jsx"></script>
-  <script type="text/babel" src="app/Workshops.jsx"></script>
-  <script type="text/babel" src="app/Mycelium.jsx"></script>
-  <script type="text/babel" src="app/Cortex.jsx"></script>
-  <script type="text/babel" src="app/Nav.jsx"></script>
-  <script type="text/babel" src="app/Footer.jsx"></script>
-  <script type="text/babel" src="app/Home.jsx"></script>
-  <script type="text/babel" src="app/Making.jsx"></script>
-  <script type="text/babel" src="app/Archive.jsx"></script>
-  <script type="text/babel" src="app/Sections.jsx"></script>
-  <script type="text/babel" src="app/PaperReader.jsx"></script>
-  <script type="text/babel" src="app/Words.jsx"></script>
-  <script type="text/babel" src="app/Theme.jsx"></script>
-  <script type="text/babel" src="app/app.jsx"></script>
+  <script defer src="app.js"></script>
 </body>
 </html>
