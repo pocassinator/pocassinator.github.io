@@ -40,7 +40,7 @@ function Footer({ onNavigate }) {
       <div style={{ maxWidth: "var(--content-max)", margin: "0 auto", padding: "var(--space-5) var(--gutter-wide)",
         borderTop: "1px dotted var(--rule)", display: "flex", justifyContent: "space-between", gap: "var(--space-3)", flexWrap: "wrap" }}>
         <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-ghost)" }}>© 2026 Shruti Solanki</span>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-ghost)" }}>Artist · Educator · Researcher</span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-ghost)" }}>Learner · Artist · Educator</span>
       </div>
     </footer>
   );

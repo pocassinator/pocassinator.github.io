@@ -160,12 +160,15 @@ function RefList({ refs, title = "References", defaultOpen = false, style }) {
         onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
         style={{ appearance: "none", background: "none", border: 0, cursor: "pointer", padding: 0, width: "100%",
           display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", textTransform: "uppercase",
-          letterSpacing: "var(--ls-label)", color: open || h ? "var(--sage)" : "var(--text-faint)", transition: "color var(--dur)" }}>{title}</span>
-        <span style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-ghost)" }}>
-          {refs.length}
-          <span aria-hidden="true" style={{ fontSize: "var(--fs-md)", lineHeight: 1, width: "1ch", textAlign: "center",
-            color: open || h ? "var(--sage)" : "var(--text-faint)", transition: "color var(--dur)" }}>{open ? "−" : "+"}</span>
+        <span style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+          <span aria-hidden="true" style={{ display: "inline-block", fontSize: "var(--fs-xs)", lineHeight: 1,
+            color: open || h ? "var(--sage)" : "var(--text-faint)", transform: open ? "rotate(90deg)" : "none",
+            transition: "transform var(--dur) var(--ease-out), color var(--dur)" }}>▸</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", textTransform: "uppercase",
+            letterSpacing: "var(--ls-label)", color: open || h ? "var(--sage)" : "var(--text-faint)", transition: "color var(--dur)" }}>{title}</span>
+        </span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", color: "var(--text-ghost)" }}>
+          {open ? "hide" : refs.length + " — show"}
         </span>
       </button>
       {open && (

@@ -130,11 +130,13 @@ function Archive() {
           {/* credit */}
           <section style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-6)", marginTop: "var(--space-7)" }}>
             <Eyebrow style={{ marginBottom: "var(--space-3)" }}>Credit</Eyebrow>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-muted)", lineHeight: "var(--lh-normal)", maxWidth: "60ch", margin: 0 }}>
-              Tech &amp; automation wizard of the project — and of this website —{" "}
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-md)", color: "var(--text-muted)", lineHeight: "var(--lh-normal)", maxWidth: "60ch", margin: 0 }}>
+              Tech &amp; Automation Wizard for The Hallucinating Archive —{" "}
               <span style={{ color: "var(--text)" }}>Prashant Solanki</span>, my brother.{" "}
               <a href="https://www.instagram.com/borderline.incriminating" target="_blank" rel="noopener noreferrer"
-                style={{ color: "var(--sage)", whiteSpace: "nowrap" }}>@borderline.incriminating&nbsp;↗</a>
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--sage)")}
+                style={{ color: "var(--sage)", whiteSpace: "nowrap", textDecoration: "none", transition: "color var(--dur)" }}>@borderline.incriminating&nbsp;↗</a>
             </p>
           </section>
         </div>

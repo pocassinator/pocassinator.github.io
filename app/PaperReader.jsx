@@ -86,6 +86,17 @@ function Reflections({ paperId }) {
   );
 }
 
+/* where a "related thread" should link: an essay → its paper page, a field note
+   → its note page, the archive node → the Archive, anything else → its theme. */
+function relatedNavTarget(node) {
+  if (!node) return null;
+  if ((window.ESSAY_INDEX || {})[node.id]) return "paper:" + node.id;
+  if ((window.FIELD_NOTE_INDEX || {})[node.id]) return "note:" + node.id;
+  if (node.id === "archive") return "The Hallucinating Archive";
+  if (node.tags && node.tags.length) return "theme:" + node.tags[0];
+  return null;
+}
+
 function PaperPage({ paperId, onNavigate }) {
   const phone = window.useIsPhone ? window.useIsPhone() : false;
   const paper = (window.ESSAY_INDEX || {})[paperId];
@@ -149,12 +160,19 @@ function PaperPage({ paperId, onNavigate }) {
         {related.length > 0 && (
           <div style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-5)", marginTop: "var(--space-6)" }}>
             <Eyebrow style={{ marginBottom: "var(--space-3)" }}>Related threads</Eyebrow>
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", alignItems: "flex-start" }}>
-              {related.map((r) => (
-                <button key={r.id} onClick={() => window.ESSAY_INDEX[r.id] ? onNavigate("paper:" + r.id) : null}
-                  style={{ appearance: "none", background: "none", border: 0, padding: 0, cursor: window.ESSAY_INDEX[r.id] ? "pointer" : "default",
-                    fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--sage)" }}>{r.title}{window.ESSAY_INDEX[r.id] ? " →" : ""}</button>
-              ))}
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)", alignItems: "flex-start" }}>
+              {related.map((r) => {
+                const target = relatedNavTarget(r);
+                return (
+                  <a key={r.id} href={target ? "#" + target : undefined}
+                    onClick={(e) => { if (target) { e.preventDefault(); onNavigate(target); } }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--sage)")}
+                    style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--sage)",
+                      textDecoration: "none", borderBottom: "1px dotted currentColor", cursor: "pointer",
+                      transition: "color var(--dur)" }}>{r.title} →</a>
+                );
+              })}
             </div>
           </div>
         )}

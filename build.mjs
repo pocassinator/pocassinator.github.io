@@ -49,10 +49,13 @@ window.React = React;
 window.ReactDOM = Object.assign({}, ReactDOM, ReactDOMClient);
 `;
   const entry = preamble + '\n\n' + (await cat(GESTURES)) + '\n\n' + (await cat(APP));
-  const entryPath = path.join(TMP, 'entry.jsx');
+  // name the entry 'app' so the hashed output is app-<hash>.js
+  const entryPath = path.join(TMP, 'app.jsx');
   await writeFile(entryPath, entry);
 
-  await esbuild.build({
+  // Content-hashed filenames so every deploy busts browser/CDN caches —
+  // returning visitors always get the latest bundle, never a stale app.js.
+  const jsResult = await esbuild.build({
     entryPoints: [entryPath],
     bundle: true,
     format: 'iife',
@@ -64,31 +67,41 @@ window.ReactDOM = Object.assign({}, ReactDOM, ReactDOMClient);
     jsxFragment: 'React.Fragment',
     define: { 'process.env.NODE_ENV': '"production"' },
     legalComments: 'none',
-    outfile: path.join(DIST, 'app.js'),
+    outdir: DIST,
+    entryNames: '[name]-[hash]',
+    metafile: true,
     logLevel: 'info',
   });
+  const jsName = path.basename(Object.keys(jsResult.metafile.outputs).find((f) => f.endsWith('.js')));
 
   // ---- CSS bundle (inlines tokens, fingerprints + copies the woff2 fonts) ----
-  await esbuild.build({
+  const cssResult = await esbuild.build({
     entryPoints: ['styles.css'],
     bundle: true,
     minify: true,
     loader: { '.woff2': 'file' },
     assetNames: 'assets/fonts/[name]',
-    outfile: path.join(DIST, 'styles.css'),
+    outdir: DIST,
+    entryNames: '[name]-[hash]',
+    metafile: true,
     logLevel: 'info',
   });
+  const cssName = path.basename(Object.keys(cssResult.metafile.outputs).find((f) => f.endsWith('.css')));
+
+  // ---- HTML: inject the hashed asset names ----
+  let html = await readFile('index.html', 'utf8');
+  html = html.replace('href="styles.css"', `href="${cssName}"`).replace('src="app.js"', `src="${jsName}"`);
+  await writeFile(path.join(DIST, 'index.html'), html);
 
   // ---- static assets ----
   await cp('assets/artwork', path.join(DIST, 'assets/artwork'), { recursive: true });
-  await cp('index.html', path.join(DIST, 'index.html'));
   await cp('404.html', path.join(DIST, '404.html'));
   for (const f of ['CNAME', '.nojekyll', 'favicon.svg', 'robots.txt', 'sitemap.xml']) {
     await cp(f, path.join(DIST, f)).catch(() => {});
   }
 
   await rm(TMP, { recursive: true, force: true });
-  console.log('\n✓ Built to dist/');
+  console.log(`\n✓ Built to dist/  (${jsName}, ${cssName})`);
 }
 
 build().catch((e) => { console.error(e); process.exit(1); });

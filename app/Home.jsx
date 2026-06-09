@@ -36,7 +36,7 @@ function Home({ onNavigate }) {
       <section style={{ position: "relative", minHeight: "78vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         <HeroNet />
         <div style={{ ...wrap, position: "relative" }}>
-          <Eyebrow spacing="loose" style={{ marginBottom: "var(--space-5)" }}>Artist · Educator · Researcher</Eyebrow>
+          <Eyebrow spacing="loose" style={{ marginBottom: "var(--space-5)" }}>Learner · Artist · Educator</Eyebrow>
           <h1 style={{ fontSize: "clamp(2.6rem, 6vw, var(--fs-4xl))", fontWeight: 700, letterSpacing: "var(--ls-tight)",
             lineHeight: "var(--lh-tight)", maxWidth: "18ch" }}>
             My work lives in a dynamic blend of <span style={{ color: "var(--sage)" }}>control</span> and <span style={{ color: "var(--sage)" }}>chaos</span>.
