@@ -20,6 +20,7 @@ function App() {
 
   const screens = {
     "Home": () => <Home onNavigate={navigate} />,
+    "Projects": () => <Projects onNavigate={navigate} />,
     "Making": () => <Making onNavigate={navigate} />,
     "The Hallucinating Archive": () => <Archive />,
     "Unmaking": () => <Unmaking onNavigate={navigate} />,

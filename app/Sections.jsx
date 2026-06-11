@@ -411,4 +411,35 @@ function Wares() {
   );
 }
 
-Object.assign(window, { InPublic, Unmaking, About, Contact, Wares, LedgerRow, StateBadge });
+function Projects({ onNavigate }) {
+  const phone = window.useIsPhone ? window.useIsPhone() : false;
+  const projects = [
+    { key: "The Hallucinating Archive", kicker: "Interactive installation · research",
+      blurb: "A two-track public installation and research prototype that treats AI hallucination not as an error but as a way of knowing — a private reply and a public, projected inner monologue, side by side." },
+  ];
+  return (
+    <main className="fade-in" style={{ paddingTop: "var(--space-8)" }}>
+      <section style={wrapStyle}>
+        <PageHead kicker="Selected projects" title="Projects"
+          lede="Larger bodies of work that gather making, research and public encounter into one thing." />
+        <div style={{ display: "grid", gridTemplateColumns: phone ? "1fr" : "repeat(auto-fit, minmax(320px, 1fr))", gap: "var(--space-6)" }}>
+          {projects.map((p) => (
+            <button key={p.key} onClick={() => onNavigate(p.key)}
+              style={{ appearance: "none", textAlign: "left", cursor: "pointer", background: "var(--paper-800)",
+                border: "1px solid var(--border)", borderRadius: "var(--radius-sm)", padding: "var(--space-6)",
+                display: "flex", flexDirection: "column", gap: "var(--space-3)", transition: "border-color var(--dur) var(--ease-out)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--sage-deep)")}
+              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}>
+              <Eyebrow>{p.kicker}</Eyebrow>
+              <h2 style={{ fontSize: "var(--fs-xl)" }}>{p.key}</h2>
+              <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-muted)", lineHeight: "var(--lh-normal)", margin: 0 }}>{p.blurb}</p>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--sage)", marginTop: "var(--space-2)" }}>Open the project →</span>
+            </button>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+Object.assign(window, { InPublic, Unmaking, About, Contact, Wares, Projects, LedgerRow, StateBadge });

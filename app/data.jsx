@@ -261,8 +261,7 @@ const ARCHIVE_CHAPTERS = [
     "From there it reaches into phenomenology and embodiment — Merleau-Ponty’s perception as embodied participation, 4E cognition (embodied, embedded, enactive, extended), affect theory after Sara Ahmed, relational aesthetics, and neuroaesthetics. Arthur Danto’s idea that meaning emerges through interpretive frames gives me a way to treat AI hallucination as an epistemic event rather than a malfunction: the machine, like us, narrates the world into being.",
   ] },
   { n: "06", title: "Current work", kind: "track", body: [
-    "Right now I am refining the prototype and writing the project into its research frame. I have articulated the Archive under the theme “the site-specific in flux” — understanding site not as a fixed location but as a shifting assemblage of physical place, digital infrastructure, and transient publics.",
-    "A version of this thinking went into my submission to Curatorial Matters (Helsinki, 2025), Curating the Self: Self-Narrative Inquiry as Meta-Reflective Curatorial Pedagogy, where I treat curation itself as a pedagogical and research method.",
+    "Right now I am refining the prototype and writing the project into its research frame.",
   ] },
   { n: "07", title: "Next phase", kind: "track", body: [
     "The next phase scales the Archive into a full immersive installation that doubles as a phenomenological, arts-based research site. The methodology is practitioner-led: I work simultaneously as artist, facilitator, and observer, generating data through participant reflections, conversations, visual and spatial responses, facilitation journals, embodied field notes, and affective-atmosphere mapping.",
@@ -273,7 +272,7 @@ const ARCHIVE_CHAPTERS = [
 /* ---- Cortex: the whole site as a node graph (macro) ---- */
 const SITE_MAP = {
   Home: [],
-  "The Hallucinating Archive": [],
+  Projects: ["The Hallucinating Archive"],
   Unmaking: ["Essays", "More coming"],
   "In Public": ["Participatory Works", "Workshops", "Exhibitions"],
   Making: ["Making A Mess", "Digital Art & Illustrations", "Design", "Explorations"],

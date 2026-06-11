@@ -256,4 +256,4 @@ function FieldNotePage({ noteId, onNavigate }) {
   );
 }
 
-Object.assign(window, { PaperPage, FieldNotePage, Reflections });
+Object.assign(window, { PaperPage, FieldNotePage, Reflections, relatedNavTarget });

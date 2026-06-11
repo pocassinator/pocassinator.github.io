@@ -22,6 +22,33 @@ function HeroNet() {
   );
 }
 
+/* monochrome artwork gallery behind the hero — a quiet filmstrip of real work,
+   greyscaled and dimmed so the statement and the neural map carry the eye. */
+const HERO_IMAGES = [
+  "assets/artwork/hero/art-05.jpeg",
+  "assets/artwork/hero/art-12.jpeg",
+  "assets/artwork/hero/art-17.jpeg",
+  "assets/artwork/hero/art-10.jpeg",
+  "assets/artwork/hero/art-19.jpeg",
+];
+function HeroGallery() {
+  const phone = window.useIsPhone ? window.useIsPhone() : false;
+  const imgs = phone ? HERO_IMAGES.slice(0, 3) : HERO_IMAGES;
+  return (
+    <div aria-hidden="true" style={{ position: "absolute", inset: 0, display: "flex" }}>
+      {imgs.map((src, i) => (
+        <div key={i} style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
+          <img src={src} alt="" loading="lazy"
+            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(1) contrast(1.05) brightness(0.55)" }} />
+        </div>
+      ))}
+      {/* scrims: dark toward the text side + a soft top/bottom vignette so the space breathes */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 88%, transparent) 44%, color-mix(in srgb, var(--bg) 62%, transparent) 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(0deg, var(--bg) 0%, transparent 26%, transparent 74%, color-mix(in srgb, var(--bg) 50%, transparent) 100%)" }} />
+    </div>
+  );
+}
+
 function Home({ onNavigate }) {
   const wrap = { maxWidth: "var(--content-max)", margin: "0 auto", padding: "0 var(--gutter-wide)" };
   const phone = window.useIsPhone ? window.useIsPhone() : false;
@@ -32,24 +59,22 @@ function Home({ onNavigate }) {
   ];
   return (
     <main className="fade-in">
-      {/* hero */}
-      <section style={{ position: "relative", minHeight: "78vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+      {/* hero — monochrome gallery, neural map, then the statement on top */}
+      <section style={{ position: "relative", minHeight: phone ? "82vh" : "92vh", display: "flex", alignItems: "center",
+        overflow: "hidden", padding: "var(--space-11) 0" }}>
+        <HeroGallery />
         <HeroNet />
         <div style={{ ...wrap, position: "relative" }}>
-          <Eyebrow spacing="loose" style={{ marginBottom: "var(--space-5)" }}>Learner · Artist · Educator</Eyebrow>
+          <Eyebrow spacing="loose" style={{ marginBottom: "var(--space-6)" }}>Learner · Artist · Educator</Eyebrow>
           <h1 style={{ fontSize: "clamp(2.6rem, 6vw, var(--fs-4xl))", fontWeight: 700, letterSpacing: "var(--ls-tight)",
             lineHeight: "var(--lh-tight)", maxWidth: "18ch" }}>
             My work lives in a dynamic blend of <span style={{ color: "var(--sage)" }}>control</span> and <span style={{ color: "var(--sage)" }}>chaos</span>.
           </h1>
           <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-md)", color: "var(--text-muted)",
-            maxWidth: "52ch", marginTop: "var(--space-6)", lineHeight: "var(--lh-normal)" }}>
+            maxWidth: "52ch", marginTop: "var(--space-7)", lineHeight: "var(--lh-normal)" }}>
             Painting, writing, teaching — held together by one question about how we come to know.
             Everything here is organised by what it is, not by which hat I wear.
           </p>
-          <div style={{ display: "flex", gap: "var(--space-5)", marginTop: "var(--space-7)" }}>
-            <Button variant="solid" onClick={() => onNavigate("The Hallucinating Archive")}>Enter the Archive</Button>
-            <Button variant="link" icon="" onClick={() => onNavigate("Making")}>See the work →</Button>
-          </div>
         </div>
       </section>
 
@@ -91,18 +116,6 @@ function Home({ onNavigate }) {
               <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-faint)", marginTop: "var(--space-2)", lineHeight: "var(--lh-normal)" }}>{line}</p>
             </button>
           ))}
-        </div>
-      </section>
-
-      {/* mycelium preview */}
-      <section style={{ ...wrap, marginTop: "var(--space-10)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "var(--space-2)" }}>
-          <Eyebrow>See how the work connects</Eyebrow>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-faint)" }}>hover a node</span>
-        </div>
-        <div style={{ border: "1px dotted var(--rule)", borderRadius: "var(--radius-sm)", padding: "var(--space-4)" }}>
-          <Mycelium nodes={[...window.WORKS.slice(0, 6), ...(window.ESSAYS || []).slice(0, 3), window.NODE_INDEX["archive"]]}
-            height={300} seed={9} compact />
         </div>
       </section>
 

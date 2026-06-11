@@ -2,45 +2,122 @@
    Timeline (gallery by series) ⇄ Mycelium (the work web). Works show as
    greyscale placeholder plates until labelled image files are supplied. */
 
-function Lightbox({ work, onClose, onNavigate }) {
+/* a viewport-fitting image panel: the whole artwork shows at once (object-fit
+   contain), with a hatch placeholder until a real image is supplied. */
+function LightboxImage({ work, phone }) {
+  return (
+    <div style={{ position: "relative", flex: phone ? "0 0 auto" : "1 1 58%", minWidth: 0, minHeight: 0,
+      height: phone ? "42vh" : "auto", background: "var(--paper-850)", display: "grid", placeItems: "center", overflow: "hidden" }}>
+      {work.image ? (
+        <img src={work.image} alt={work.title}
+          style={{ maxWidth: "100%", maxHeight: phone ? "42vh" : "92vh", objectFit: "contain", display: "block" }} />
+      ) : (
+        <React.Fragment>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(236,236,236,0.04) 0 1px, transparent 1px 11px)" }} />
+          <div style={{ textAlign: "center", color: "var(--text-ghost)", fontFamily: "var(--font-mono)", position: "relative" }}>
+            <div style={{ fontSize: "var(--fs-2xl)", opacity: 0.5 }}>▦</div>
+            <div style={{ fontSize: "var(--fs-2xs)", textTransform: "uppercase", letterSpacing: "var(--ls-label)", marginTop: "var(--space-2)" }}>{work.title}</div>
+          </div>
+        </React.Fragment>
+      )}
+    </div>
+  );
+}
+
+function NavArrow({ side, onClick, label }) {
+  const [h, setH] = React.useState(false);
+  return (
+    <button onClick={(e) => { e.stopPropagation(); onClick(); }} aria-label={label}
+      onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
+      style={{ position: "absolute", top: "50%", transform: "translateY(-50%)", [side]: "10px", zIndex: 2,
+        appearance: "none", cursor: "pointer", width: "40px", height: "40px", borderRadius: "var(--radius-pill)",
+        border: "1px solid var(--border-strong)", background: h ? "var(--sage)" : "color-mix(in srgb, var(--paper-900) 80%, transparent)",
+        color: h ? "var(--text-on-sage)" : "var(--text)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-lg)", lineHeight: 1,
+        display: "grid", placeItems: "center", transition: "background var(--dur), color var(--dur)" }}>
+      {side === "left" ? "‹" : "›"}
+    </button>
+  );
+}
+
+function Lightbox({ work, works, onSelect, onClose, onNavigate }) {
   const phone = window.useIsPhone ? window.useIsPhone() : false;
+  const list = works || [];
+  const idx = work ? list.findIndex((w) => w.id === work.id) : -1;
+  const hasNav = idx >= 0 && list.length > 1;
+  const go = (dir) => { if (idx < 0) return; const n = (idx + dir + list.length) % list.length; onSelect(list[n]); };
   React.useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && onClose();
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      else if (hasNav && e.key === "ArrowRight") go(1);
+      else if (hasNav && e.key === "ArrowLeft") go(-1);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, [onClose, hasNav, idx, list]);
   if (!work) return null;
   const related = (work.related || []).map((id) => window.NODE_INDEX[id]).filter(Boolean);
+  const meta = [work.medium, work.size, work.year].filter(Boolean).join(" · ");
   return (
     <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: "var(--z-dialog)",
-      background: "var(--bg-overlay)", backdropFilter: "blur(3px)", display: "grid", placeItems: "center", padding: phone ? "var(--space-4)" : "var(--space-7)" }}>
-      <div onClick={(e) => e.stopPropagation()} style={{ display: "grid", gridTemplateColumns: phone ? "1fr" : "1.4fr 1fr", gap: phone ? "var(--space-4)" : "var(--space-7)",
-        maxWidth: "1040px", width: "100%", maxHeight: "86vh", background: "var(--paper-800)",
+      background: "var(--bg-overlay)", backdropFilter: "blur(3px)", display: "grid", placeItems: "center", padding: phone ? "var(--space-3)" : "var(--space-6)" }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ display: "flex", flexDirection: phone ? "column" : "row",
+        width: "100%", maxWidth: "1100px", maxHeight: "92vh", background: "var(--paper-800)",
         border: "1px solid var(--border-strong)", borderRadius: "var(--radius-sm)", boxShadow: "var(--shadow-pop)", overflow: "hidden" }}>
-        <Plate src={work.image} label={work.title} ratio={phone ? "4 / 3" : "1 / 1"} style={{ minHeight: phone ? "240px" : "440px", height: "100%", borderRadius: 0, border: 0 }} />
-        <div style={{ padding: phone ? "var(--space-5)" : "var(--space-7) var(--space-7) var(--space-7) 0", overflowY: "auto" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
-            <Eyebrow>{work.series}</Eyebrow>
+
+        <div style={{ position: "relative", display: "flex", flex: phone ? "0 0 auto" : "1 1 58%", minHeight: 0 }}>
+          <LightboxImage work={work} phone={phone} />
+          {hasNav && <NavArrow side="left" onClick={() => go(-1)} label="Previous work" />}
+          {hasNav && <NavArrow side="right" onClick={() => go(1)} label="Next work" />}
+        </div>
+
+        <div style={{ flex: phone ? "1 1 auto" : "0 0 42%", padding: phone ? "var(--space-5)" : "var(--space-7)",
+          overflowY: "auto", minHeight: 0, display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", gap: "var(--space-3)" }}>
+            <Eyebrow>{work.series || "Work"}{hasNav ? "  ·  " + (idx + 1) + " / " + list.length : ""}</Eyebrow>
             <button onClick={onClose} aria-label="Close" style={{ appearance: "none", background: "none", border: 0, color: "var(--text-faint)", cursor: "pointer" }}><Icon name="x" size={16} /></button>
           </div>
           <h2 style={{ fontSize: "var(--fs-xl)", margin: "var(--space-3) 0 var(--space-2)" }}>{work.title}{work.suffix ? <span style={{ color: "var(--text-faint)", fontWeight: 400 }}> · {work.suffix}</span> : null}</h2>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-faint)" }}>
-            {[work.medium, work.size, work.year].filter(Boolean).join(" · ")}
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)", margin: "var(--space-5) 0" }}>
-            {work.tags.map((t) => <Tag key={t}>{t}</Tag>)}
-          </div>
+          {meta && <div style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--text-faint)" }}>{meta}</div>}
+          {work.tags && work.tags.length > 0 && (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)", margin: "var(--space-5) 0" }}>
+              {work.tags.map((t) => <Tag key={t}>{t}</Tag>)}
+            </div>
+          )}
           {related.length > 0 && (
             <div style={{ borderTop: "1px dotted var(--rule)", paddingTop: "var(--space-4)" }}>
               <Eyebrow style={{ marginBottom: "var(--space-3)" }}>Related threads</Eyebrow>
-              <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
-                {related.map((r) => (
-                  <a key={r.id} href="#" onClick={(e) => e.preventDefault()} style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)" }}>{r.title} →</a>
-                ))}
+              <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", alignItems: "flex-start" }}>
+                {related.map((r) => {
+                  const target = window.relatedNavTarget ? window.relatedNavTarget(r) : null;
+                  return (
+                    <a key={r.id} href={target ? "#" + target : undefined}
+                      onClick={(e) => { if (target) { e.preventDefault(); onClose(); onNavigate(target); } }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--sage)")}
+                      style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-sm)", color: "var(--sage)",
+                        textDecoration: "none", borderBottom: "1px dotted currentColor", cursor: "pointer", transition: "color var(--dur)" }}>{r.title} →</a>
+                  );
+                })}
               </div>
             </div>
           )}
-          <div style={{ marginTop: "var(--space-6)" }}>
+
+          {/* prev / next + write */}
+          <div style={{ marginTop: "auto", paddingTop: "var(--space-6)" }}>
+            {hasNav && (
+              <div style={{ display: "flex", justifyContent: "space-between", gap: "var(--space-3)", marginBottom: "var(--space-4)" }}>
+                <button onClick={() => go(-1)} style={{ appearance: "none", background: "none", border: 0, padding: 0, cursor: "pointer",
+                  fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-muted)", textAlign: "left", maxWidth: "48%" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--sage)")} onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}>
+                  ← {list[(idx - 1 + list.length) % list.length].title}
+                </button>
+                <button onClick={() => go(1)} style={{ appearance: "none", background: "none", border: 0, padding: 0, cursor: "pointer",
+                  fontFamily: "var(--font-mono)", fontSize: "var(--fs-xs)", color: "var(--text-muted)", textAlign: "right", maxWidth: "48%" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--sage)")} onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}>
+                  {list[(idx + 1) % list.length].title} →
+                </button>
+              </div>
+            )}
             <Button variant="outline" size="sm" onClick={() => { onClose(); onNavigate("Contact"); }}>Write about this work</Button>
           </div>
         </div>
@@ -172,7 +249,7 @@ function Making({ onNavigate }) {
           </div>
         )}
       </section>
-      <Lightbox work={box} onClose={() => setBox(null)} onNavigate={onNavigate} />
+      <Lightbox work={box} works={window.WORKS} onSelect={setBox} onClose={() => setBox(null)} onNavigate={onNavigate} />
     </main>
   );
 }

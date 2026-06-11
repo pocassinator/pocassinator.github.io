@@ -16,7 +16,7 @@ function NavItem({ label, sub, active, onClick }) {
 }
 
 const NAV_ITEMS = [
-  ["The Hallucinating Archive", "Interactive installation & research"],
+  ["Projects", "Selected projects"],
   ["Unmaking", "Research & Writing"],
   ["In Public", "Exhibitions & Workshops"],
   ["Making", "Art, Digital & Design"],
