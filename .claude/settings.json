@@ -5,7 +5,8 @@
       "Bash(curl -s \"https://shrutisolanki.com/app-FYHC7XI3.js\" -o /tmp/v.js)",
       "Bash(python3 -c ' *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://shrutisolanki.com/assets/artwork/hero/art-05.jpeg\")",
-      "Bash(git commit --quiet -m ' *)"
+      "Bash(git commit --quiet -m ' *)",
+      "Bash(curl -s \"https://shrutisolanki.com/index.html?cb=$\\(date +%s\\)\")"
     ]
   }
 }

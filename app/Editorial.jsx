@@ -33,6 +33,9 @@ function Plate({ src, label, ratio = "4 / 3", caption, style, tall }) {
               <div style={{ fontSize: "var(--fs-2xs)", textTransform: "uppercase", letterSpacing: "var(--ls-label)", marginTop: "var(--space-2)" }}>
                 {label || "image"}
               </div>
+              <div style={{ fontSize: "var(--fs-2xs)", textTransform: "uppercase", letterSpacing: "var(--ls-label)", marginTop: "4px", color: "var(--sage)", opacity: 0.8 }}>
+                image coming soon · WIP
+              </div>
             </div>
           </div>
         </React.Fragment>

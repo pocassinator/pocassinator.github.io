@@ -96,7 +96,9 @@ function Home({ onNavigate }) {
           <div style={{ alignSelf: "stretch", minHeight: phone ? "200px" : "320px", order: phone ? 1 : 0,
             background: "var(--paper-850)", borderBottom: phone ? "1px solid var(--border)" : "none", position: "relative" }}>
             <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(236,236,236,0.04) 0 1px, transparent 1px 11px)" }} />
-            <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "var(--text-ghost)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", textTransform: "uppercase", letterSpacing: "var(--ls-label)" }}>image</div>
+            <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", textAlign: "center", color: "var(--text-ghost)", fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", textTransform: "uppercase", letterSpacing: "var(--ls-label)" }}>
+              <span>image<br /><span style={{ color: "var(--sage)", opacity: 0.8 }}>coming soon · WIP</span></span>
+            </div>
           </div>
         </div>
       </section>

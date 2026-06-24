@@ -17,6 +17,7 @@ function LightboxImage({ work, phone }) {
           <div style={{ textAlign: "center", color: "var(--text-ghost)", fontFamily: "var(--font-mono)", position: "relative" }}>
             <div style={{ fontSize: "var(--fs-2xl)", opacity: 0.5 }}>▦</div>
             <div style={{ fontSize: "var(--fs-2xs)", textTransform: "uppercase", letterSpacing: "var(--ls-label)", marginTop: "var(--space-2)" }}>{work.title}</div>
+            <div style={{ fontSize: "var(--fs-2xs)", textTransform: "uppercase", letterSpacing: "var(--ls-label)", marginTop: "4px", color: "var(--sage)", opacity: 0.8 }}>image coming soon · WIP</div>
           </div>
         </React.Fragment>
       )}

@@ -53,6 +53,11 @@ function App() {
       <div style={{ flex: 1 }} key={page}>
         <Screen />
       </div>
+      {/* global work-in-progress note — appears under every page */}
+      <div style={{ borderTop: "1px dotted var(--rule)", padding: "var(--space-5) var(--gutter-wide)", textAlign: "center" }}>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--fs-2xs)", textTransform: "uppercase",
+          letterSpacing: "var(--ls-label)", color: "var(--text-faint)" }}>✦&nbsp; This website is a work in progress &nbsp;✦</span>
+      </div>
       <Footer onNavigate={navigate} />
       <Cortex current={chromeCurrent} onNavigate={navigate} />
     </div>
